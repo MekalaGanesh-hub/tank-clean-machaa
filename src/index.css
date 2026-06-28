@@ -1,0 +1,199 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  .bg-glass {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  .bg-glass-dark {
+    background: rgba(11, 77, 171, 0.03);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .text-brand-blue {
+    color: #0B4DAB;
+  }
+  .bg-brand-blue {
+    background-color: #0B4DAB;
+  }
+  .border-brand-blue {
+    border-color: #0B4DAB;
+  }
+
+  .text-brand-green {
+    color: #8CCB00;
+  }
+  .bg-brand-green {
+    background-color: #8CCB00;
+  }
+  .border-brand-green {
+    border-color: #8CCB00;
+  }
+}
+
+/* Keyframe animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-delay-100 {
+  animation-delay: 100ms;
+}
+
+.animate-delay-200 {
+  animation-delay: 200ms;
+}
+
+.animate-delay-300 {
+  animation-delay: 300ms;
+}
+
+/* ═══ 3D Hero Logo Animations ═══ */
+
+/* Main 3D floating + rotating animation */
+@keyframes logo3dFloat {
+  0% {
+    transform: translateY(0) rotateY(0deg) rotateX(0deg) scale(1);
+    filter: drop-shadow(0 20px 40px rgba(11, 77, 171, 0.25));
+  }
+  15% {
+    transform: translateY(-12px) rotateY(6deg) rotateX(3deg) scale(1.015);
+    filter: drop-shadow(12px 28px 45px rgba(11, 77, 171, 0.3));
+  }
+  30% {
+    transform: translateY(-22px) rotateY(10deg) rotateX(-2deg) scale(1.03);
+    filter: drop-shadow(18px 35px 50px rgba(11, 77, 171, 0.35));
+  }
+  50% {
+    transform: translateY(-28px) rotateY(0deg) rotateX(-4deg) scale(1.04);
+    filter: drop-shadow(0 40px 55px rgba(11, 77, 171, 0.38));
+  }
+  70% {
+    transform: translateY(-22px) rotateY(-10deg) rotateX(2deg) scale(1.03);
+    filter: drop-shadow(-18px 35px 50px rgba(11, 77, 171, 0.35));
+  }
+  85% {
+    transform: translateY(-12px) rotateY(-6deg) rotateX(-3deg) scale(1.015);
+    filter: drop-shadow(-12px 28px 45px rgba(11, 77, 171, 0.3));
+  }
+  100% {
+    transform: translateY(0) rotateY(0deg) rotateX(0deg) scale(1);
+    filter: drop-shadow(0 20px 40px rgba(11, 77, 171, 0.25));
+  }
+}
+
+/* Glow ring pulse behind logo */
+@keyframes glowPulse {
+  0%, 100% {
+    transform: scale(0.92);
+    opacity: 0.3;
+    box-shadow: 0 0 40px 15px rgba(11, 77, 171, 0.15), 0 0 80px 30px rgba(140, 203, 0, 0.08);
+  }
+  50% {
+    transform: scale(1.08);
+    opacity: 0.55;
+    box-shadow: 0 0 60px 25px rgba(11, 77, 171, 0.25), 0 0 120px 50px rgba(140, 203, 0, 0.12);
+  }
+}
+
+/* Orbiting water droplets */
+@keyframes orbitDrop1 {
+  0%   { transform: rotate(0deg)   translateX(200px) rotate(0deg)   scale(0.8); opacity: 0.7; }
+  25%  { transform: rotate(90deg)  translateX(210px) rotate(-90deg)  scale(1);   opacity: 1;   }
+  50%  { transform: rotate(180deg) translateX(195px) rotate(-180deg) scale(0.9); opacity: 0.8; }
+  75%  { transform: rotate(270deg) translateX(215px) rotate(-270deg) scale(1.1); opacity: 0.9; }
+  100% { transform: rotate(360deg) translateX(200px) rotate(-360deg) scale(0.8); opacity: 0.7; }
+}
+
+@keyframes orbitDrop2 {
+  0%   { transform: rotate(120deg) translateX(175px) rotate(-120deg) scale(1);   opacity: 0.6; }
+  50%  { transform: rotate(300deg) translateX(185px) rotate(-300deg) scale(0.7); opacity: 1;   }
+  100% { transform: rotate(480deg) translateX(175px) rotate(-480deg) scale(1);   opacity: 0.6; }
+}
+
+@keyframes orbitDrop3 {
+  0%   { transform: rotate(240deg) translateX(190px) rotate(-240deg) scale(0.9); opacity: 0.5; }
+  50%  { transform: rotate(420deg) translateX(205px) rotate(-420deg) scale(1.2); opacity: 0.9; }
+  100% { transform: rotate(600deg) translateX(190px) rotate(-600deg) scale(0.9); opacity: 0.5; }
+}
+
+/* Shimmer sweep over logo */
+@keyframes shimmer {
+  0%   { transform: translateX(-100%) rotate(25deg); }
+  100% { transform: translateX(200%) rotate(25deg); }
+}
+
+/* Water splash burst on load */
+@keyframes splashIn {
+  0%   { transform: scale(0.3) rotate(-10deg); opacity: 0; }
+  60%  { transform: scale(1.06) rotate(2deg); opacity: 1; }
+  80%  { transform: scale(0.97) rotate(-1deg); opacity: 1; }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+/* Utility classes */
+.logo-3d-wrapper {
+  perspective: 1200px;
+  perspective-origin: center center;
+}
+
+.logo-3d {
+  transform-style: preserve-3d;
+  animation: logo3dFloat 8s cubic-bezier(0.37, 0, 0.63, 1) infinite, splashIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  will-change: transform, filter;
+  transition: transform 0.3s ease-out;
+}
+
+.logo-3d:hover {
+  animation-play-state: paused;
+  transform: translateY(-15px) rotateY(15deg) rotateX(-8deg) scale(1.06);
+  filter: drop-shadow(20px 40px 60px rgba(11, 77, 171, 0.45));
+}
+
+.logo-glow-ring {
+  animation: glowPulse 4s ease-in-out infinite;
+}
+
+.logo-orbit-drop {
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 14px; height: 18px;
+  margin-top: -9px; margin-left: -7px;
+  pointer-events: none;
+}
+
+.logo-shimmer {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: 50%;
+  pointer-events: none;
+}
+.logo-shimmer::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 50%;
+  height: 200%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+  animation: shimmer 4s ease-in-out infinite;
+  animation-delay: 2s;
+}

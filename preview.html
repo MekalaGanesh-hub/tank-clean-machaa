@@ -1,0 +1,1965 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="./public/logo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tank Clean Machaa! | Professional Water Tank Cleaning Bangalore</title>
+    <meta name="description" content="Tank Clean Machaa! - Bangalore's trusted water tank cleaning company. Overhead, underground, drum cleaning & sanitization. Call Ganesh: +91 90145 38584" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: { brand: { blue: '#0B4DAB', green: '#8CCB00' } },
+            fontFamily: { sans: ['Outfit', 'Inter', 'sans-serif'] }
+          }
+        }
+      }
+    </script>
+    <style type="text/tailwindcss">
+      @layer base { html { scroll-behavior: smooth; } }
+      @layer utilities {
+        .bg-glass {
+          background: rgba(255, 255, 255, 0.88);
+          backdrop-filter: blur(14px);
+          -webkit-backdrop-filter: blur(14px);
+          border-bottom: 1px solid rgba(255,255,255,0.25);
+        }
+      }
+    </style>
+    <style>
+      @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-15px)} }
+      @keyframes fadeIn { from{opacity:0;transform:translateY(15px)} to{opacity:1;transform:translateY(0)} }
+      .animate-fade-in { animation: fadeIn 0.65s cubic-bezier(0.16,1,0.3,1) forwards; }
+      input[type=range]::-webkit-slider-thumb { background: #0B4DAB; }
+      input[type=range]::-moz-range-thumb { background: #0B4DAB; }
+
+      /* ═══ 3D Hero Logo Animations ═══ */
+      @keyframes logo3dFloat {
+        0% {
+          transform: translateY(0) rotateY(0deg) rotateX(0deg) scale(1);
+          filter: drop-shadow(0 20px 40px rgba(11, 77, 171, 0.25));
+        }
+        15% {
+          transform: translateY(-12px) rotateY(6deg) rotateX(3deg) scale(1.015);
+          filter: drop-shadow(12px 28px 45px rgba(11, 77, 171, 0.3));
+        }
+        30% {
+          transform: translateY(-22px) rotateY(10deg) rotateX(-2deg) scale(1.03);
+          filter: drop-shadow(18px 35px 50px rgba(11, 77, 171, 0.35));
+        }
+        50% {
+          transform: translateY(-28px) rotateY(0deg) rotateX(-4deg) scale(1.04);
+          filter: drop-shadow(0 40px 55px rgba(11, 77, 171, 0.38));
+        }
+        70% {
+          transform: translateY(-22px) rotateY(-10deg) rotateX(2deg) scale(1.03);
+          filter: drop-shadow(-18px 35px 50px rgba(11, 77, 171, 0.35));
+        }
+        85% {
+          transform: translateY(-12px) rotateY(-6deg) rotateX(-3deg) scale(1.015);
+          filter: drop-shadow(-12px 28px 45px rgba(11, 77, 171, 0.3));
+        }
+        100% {
+          transform: translateY(0) rotateY(0deg) rotateX(0deg) scale(1);
+          filter: drop-shadow(0 20px 40px rgba(11, 77, 171, 0.25));
+        }
+      }
+
+      @keyframes glowPulse {
+        0%, 100% {
+          transform: scale(0.92);
+          opacity: 0.3;
+          box-shadow: 0 0 40px 15px rgba(11, 77, 171, 0.15), 0 0 80px 30px rgba(140, 203, 0, 0.08);
+        }
+        50% {
+          transform: scale(1.08);
+          opacity: 0.55;
+          box-shadow: 0 0 60px 25px rgba(11, 77, 171, 0.25), 0 0 120px 50px rgba(140, 203, 0, 0.12);
+        }
+      }
+
+      @keyframes orbitDrop1 {
+        0%   { transform: rotate(0deg)   translateX(200px) rotate(0deg)   scale(0.8); opacity: 0.7; }
+        25%  { transform: rotate(90deg)  translateX(210px) rotate(-90deg)  scale(1);   opacity: 1;   }
+        50%  { transform: rotate(180deg) translateX(195px) rotate(-180deg) scale(0.9); opacity: 0.8; }
+        75%  { transform: rotate(270deg) translateX(215px) rotate(-270deg) scale(1.1); opacity: 0.9; }
+        100% { transform: rotate(360deg) translateX(200px) rotate(-360deg) scale(0.8); opacity: 0.7; }
+      }
+
+      @keyframes orbitDrop2 {
+        0%   { transform: rotate(120deg) translateX(175px) rotate(-120deg) scale(1);   opacity: 0.6; }
+        50%  { transform: rotate(300deg) translateX(185px) rotate(-300deg) scale(0.7); opacity: 1;   }
+        100% { transform: rotate(480deg) translateX(175px) rotate(-480deg) scale(1);   opacity: 0.6; }
+      }
+
+      @keyframes orbitDrop3 {
+        0%   { transform: rotate(240deg) translateX(190px) rotate(-240deg) scale(0.9); opacity: 0.5; }
+        50%  { transform: rotate(420deg) translateX(205px) rotate(-420deg) scale(1.2); opacity: 0.9; }
+        100% { transform: rotate(600deg) translateX(190px) rotate(-600deg) scale(0.9); opacity: 0.5; }
+      }
+
+      @keyframes shimmer {
+        0%   { transform: translateX(-100%) rotate(25deg); }
+        100% { transform: translateX(200%) rotate(25deg); }
+      }
+
+      @keyframes splashIn {
+        0%   { transform: scale(0.3) rotate(-10deg); opacity: 0; }
+        60%  { transform: scale(1.06) rotate(2deg); opacity: 1; }
+        80%  { transform: scale(0.97) rotate(-1deg); opacity: 1; }
+        100% { transform: scale(1) rotate(0deg); opacity: 1; }
+      }
+
+      .logo-3d-wrapper {
+        perspective: 1200px;
+        perspective-origin: center center;
+      }
+
+      .logo-3d {
+        transform-style: preserve-3d;
+        animation: logo3dFloat 8s cubic-bezier(0.37, 0, 0.63, 1) infinite, splashIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        will-change: transform, filter;
+        transition: transform 0.3s ease-out;
+      }
+
+      .logo-3d:hover {
+        animation-play-state: paused;
+        transform: translateY(-15px) rotateY(15deg) rotateX(-8deg) scale(1.06);
+        filter: drop-shadow(20px 40px 60px rgba(11, 77, 171, 0.45));
+      }
+
+      .logo-glow-ring {
+        animation: glowPulse 4s ease-in-out infinite;
+        background: radial-gradient(circle, rgba(11, 77, 171, 0.4) 0%, rgba(140, 203, 0, 0.2) 60%, transparent 100%);
+      }
+
+      .logo-orbit-drop {
+        position: absolute;
+        top: 50%; left: 50%;
+        width: 14px; height: 18px;
+        margin-top: -9px; margin-left: -7px;
+        pointer-events: none;
+      }
+
+      .logo-shimmer {
+        position: absolute;
+        inset: 0;
+        overflow: hidden;
+        border-radius: 50%;
+        pointer-events: none;
+      }
+      .logo-shimmer::after {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 50%;
+        height: 200%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+        animation: shimmer 4s ease-in-out infinite;
+        animation-delay: 2s;
+      }
+    </style>
+  </head>
+  <body class="bg-slate-50 text-slate-900 font-sans antialiased">
+    <div id="root"></div>
+
+    <script type="text/babel">
+      const { useState, useEffect } = React;
+
+      /* ── CONSTANTS ─────────────────────────────────── */
+      const PHONE      = '+919014538584';
+      const PHONE_DISP = '+91 90145 38584';
+      const WA_BASE    = 'https://wa.me/919014538584?text=';
+      const ADDRESS_SHORT = '1st Stage, BTM Layout, Near Metro Station, Bangalore - 560029';
+
+      /* ══════════════════════════════════════════════════
+         NAVBAR
+      ══════════════════════════════════════════════════ */
+      function Navbar({ onBookClick }) {
+        const [open, setOpen] = useState(false);
+        const [scrolled, setScrolled] = useState(false);
+        useEffect(() => {
+          const fn = () => setScrolled(window.scrollY > 20);
+          window.addEventListener('scroll', fn);
+          return () => window.removeEventListener('scroll', fn);
+        }, []);
+        const links = [
+          { name:'Home', href:'#home' }, { name:'Services', href:'#services' },
+          { name:'Pricing', href:'#pricing' }, { name:'Gallery', href:'#gallery' },
+          { name:'About', href:'#about' }, { name:'Contact', href:'#contact' },
+        ];
+        return (
+          <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-glass shadow-lg py-2' : 'bg-transparent py-5'}`}>
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="flex items-center justify-between h-16">
+                <a href="#home" className="flex items-center space-x-2.5">
+                  <img className="h-11 w-auto object-contain mix-blend-multiply" src="./public/logo.png" alt="Tank Clean Machaa!" />
+                  <span className="text-xl font-extrabold tracking-tight text-[#0B4DAB] hidden sm:block">
+                    Tank Clean <span className="text-[#8CCB00]">Machaa!</span>
+                  </span>
+                </a>
+                <div className="hidden md:flex items-center space-x-7">
+                  {links.map(l => (
+                    <a key={l.name} href={l.href} className="text-slate-700 hover:text-[#0B4DAB] font-semibold text-sm tracking-wide transition-colors">
+                      {l.name}
+                    </a>
+                  ))}
+                </div>
+                <div className="hidden md:flex items-center space-x-3">
+                  <a href={`tel:${PHONE}`} className="flex items-center space-x-1.5 border-2 border-[#0B4DAB] text-[#0B4DAB] font-bold py-2 px-4 rounded-full text-sm hover:bg-blue-50 transition-all">
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                    <span>{PHONE_DISP}</span>
+                  </a>
+                  <button onClick={onBookClick} className="bg-[#0B4DAB] hover:bg-blue-800 text-white font-bold py-2.5 px-6 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5">
+                    Book Now
+                  </button>
+                </div>
+                <button onClick={() => setOpen(!open)} className="md:hidden p-2 rounded-md text-slate-700 hover:text-[#0B4DAB] hover:bg-slate-100 focus:outline-none">
+                  {open
+                    ? <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                    : <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                  }
+                </button>
+              </div>
+            </div>
+            <div className={`md:hidden overflow-hidden transition-all duration-300 ${open ? 'max-h-screen bg-white border-b border-slate-200' : 'max-h-0'}`}>
+              <div className="px-4 pt-2 pb-4 space-y-1">
+                {links.map(l => (
+                  <a key={l.name} href={l.href} onClick={() => setOpen(false)} className="block px-3 py-2.5 rounded-md text-base font-semibold text-slate-700 hover:text-[#0B4DAB] hover:bg-slate-50">
+                    {l.name}
+                  </a>
+                ))}
+                <a href={`tel:${PHONE}`} className="block mt-2 text-center border-2 border-[#0B4DAB] text-[#0B4DAB] font-bold py-3 px-4 rounded-xl">{PHONE_DISP}</a>
+                <button onClick={() => { setOpen(false); onBookClick(); }} className="w-full mt-2 bg-[#0B4DAB] text-white font-bold py-3 px-4 rounded-xl shadow-md">Book Now</button>
+              </div>
+            </div>
+          </nav>
+        );
+      }
+
+      /* ══════════════════════════════════════════════════
+         HERO
+      ══════════════════════════════════════════════════ */
+      function Hero({ onBookClick }) {
+        return (
+          <section id="home" className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden bg-gradient-to-br from-blue-50 via-white to-sky-50">
+            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-100 rounded-full filter blur-3xl opacity-40 -mr-40 -mt-40 z-0"></div>
+            <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-green-50 rounded-full filter blur-2xl opacity-50 -ml-20 -mb-20 z-0"></div>
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div className="space-y-6 text-center md:text-left animate-fade-in">
+                  <div className="inline-flex items-center space-x-2 bg-blue-50 border border-blue-200 px-4 py-1.5 rounded-full">
+                    <span className="flex h-2 w-2 relative">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#8CCB00] opacity-75"></span>
+                      <span className="relative inline-flex rounded-full h-2 w-2 bg-[#8CCB00]"></span>
+                    </span>
+                    <span className="text-xs font-semibold text-[#0B4DAB] uppercase tracking-wider">Bangalore's #1 Tank Cleaner</span>
+                  </div>
+                  <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 leading-tight">
+                    Tank Clean <span className="text-[#0B4DAB] relative inline-block">
+                      Machaa!
+                      <svg className="absolute bottom-1 left-0 w-full h-2 text-[#8CCB00] opacity-60" viewBox="0 0 100 10" preserveAspectRatio="none">
+                        <path d="M0,5 Q50,10 100,5" stroke="currentColor" strokeWidth="4" fill="none"/>
+                      </svg>
+                    </span>
+                  </h1>
+                  <p className="text-xl sm:text-2xl font-bold text-slate-700">Dirty Tank? We Clean Machaa!</p>
+                  <p className="text-base sm:text-lg text-slate-600 max-w-xl mx-auto md:mx-0">
+                    We clean overhead tanks, underground sumps, drums and all water storage tanks. Advanced multi-stage equipment, pressure cleaning & chemical sanitization. Based in BTM Layout, Bangalore.
+                  </p>
+                  <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-3 pt-2">
+                    <button onClick={onBookClick} className="w-full sm:w-auto bg-[#0B4DAB] hover:bg-blue-800 text-white font-bold py-3.5 px-7 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 flex items-center justify-center space-x-2">
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                      <span>Book Service</span>
+                    </button>
+                    <a href={`${WA_BASE}Hi%20Tank%20Clean%20Machaa!%20I'd%20like%20to%20book%20a%20tank%20cleaning.`} target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto bg-[#8CCB00] hover:bg-[#78ad00] text-white font-bold py-3.5 px-7 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 flex items-center justify-center space-x-2">
+                      <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984a9.96 9.96 0 001.333 4.982L2 22l5.202-1.362a9.92 9.92 0 004.808 1.226h.003c5.502 0 9.99-4.479 9.99-9.987A9.96 9.96 0 0012.012 2zm6.09 13.98c-.25.707-1.447 1.3-1.983 1.385-.494.08-1.139.145-3.32-.74-2.793-1.13-4.6-3.965-4.737-4.153-.14-.188-1.12-1.485-1.12-2.83 0-1.348.705-2.012.955-2.28.25-.268.54-.336.722-.336.182 0 .365.002.522.01.163.008.38-.063.595.453.22.53.753 1.838.818 1.97.066.133.11.288.02.466-.09.18-.135.29-.27.447-.133.156-.28.35-.4.5-.133.167-.272.35-.117.618.155.267.69 1.13 1.48 1.834.72.64 1.326.837 1.636.966.31.13.49.108.673-.102.183-.21.785-.912.996-1.222.21-.31.42-.26.705-.152.285.11 1.808.853 2.118.998.31.144.516.216.59.34.075.127.075.734-.176 1.44z"/></svg>
+                      <span>WhatsApp</span>
+                    </a>
+                    <a href={`tel:${PHONE}`} className="w-full sm:w-auto bg-white border-2 border-[#0B4DAB] hover:bg-slate-50 text-[#0B4DAB] font-bold py-3.5 px-7 rounded-full shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5 flex items-center justify-center space-x-2">
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                      <span>Call Now</span>
+                    </a>
+                  </div>
+                  {/* Contact badge */}
+                  <div className="flex items-center justify-center md:justify-start space-x-2 pt-1">
+                    <div className="flex items-center space-x-2 bg-white border border-slate-200 shadow-sm px-4 py-2 rounded-full text-sm">
+                      <svg className="w-4 h-4 text-[#0B4DAB]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+                      <span className="font-bold text-slate-800">Ganesh</span>
+                      <span className="text-slate-400">|</span>
+                      <a href={`tel:${PHONE}`} className="font-bold text-[#0B4DAB] hover:underline">{PHONE_DISP}</a>
+                    </div>
+                  </div>
+                </div>
+                {/* Right Column: Large Logo with premium 3D effects and animations */}
+                <div className="flex justify-center items-center relative py-12 logo-3d-wrapper select-none">
+                  {/* Glowing active backdrop */}
+                  <div className="absolute w-[360px] h-[360px] rounded-full logo-glow-ring filter blur-2xl z-0"></div>
+
+                  {/* Orbiting 3D water droplets */}
+                  <div className="absolute inset-0 w-full h-full pointer-events-none z-10">
+                    {/* Drop 1 */}
+                    <div className="logo-orbit-drop animate-[orbitDrop1_12s_linear_infinite]">
+                      <svg className="w-5 h-7 text-[#0B4DAB] filter drop-shadow-md" fill="currentColor" viewBox="0 0 20 28">
+                        <path d="M10 0C10 0 20 12.44 20 18C20 23.52 15.52 28 10 28C4.48 28 0 23.52 0 18C0 12.44 10 0 10 0Z"/>
+                      </svg>
+                    </div>
+                    {/* Drop 2 */}
+                    <div className="logo-orbit-drop animate-[orbitDrop2_16s_linear_infinite]">
+                      <svg className="w-4 h-6 text-[#8CCB00] filter drop-shadow-md" fill="currentColor" viewBox="0 0 20 28">
+                        <path d="M10 0C10 0 20 12.44 20 18C20 23.52 15.52 28 10 28C4.48 28 0 23.52 0 18C0 12.44 10 0 10 0Z"/>
+                      </svg>
+                    </div>
+                    {/* Drop 3 */}
+                    <div className="logo-orbit-drop animate-[orbitDrop3_20s_linear_infinite]">
+                      <svg className="w-3.5 h-5.5 text-sky-400 filter drop-shadow-md" fill="currentColor" viewBox="0 0 20 28">
+                        <path d="M10 0C10 0 20 12.44 20 18C20 23.52 15.52 28 10 28C4.48 28 0 23.52 0 18C0 12.44 10 0 10 0Z"/>
+                      </svg>
+                    </div>
+                  </div>
+
+                  {/* 3D Main Container */}
+                  <div className="relative logo-3d max-w-full z-20">
+                    <img
+                      className="w-80 h-80 sm:w-96 sm:h-96 md:w-[450px] md:h-[450px] object-contain mix-blend-multiply"
+                      src="./public/logo.png"
+                      alt="Tank Clean Machaa! Logo"
+                    />
+                    {/* Shimmer sweep effect overlay */}
+                    <div className="logo-shimmer"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        );
+      }
+
+      /* ══════════════════════════════════════════════════
+         STATS BAR
+      ══════════════════════════════════════════════════ */
+      function StatsBar() {
+        const stats = [
+          { value:'500+', label:'Tanks Cleaned' },
+          { value:'99.9%', label:'Germ Free Rate' },
+          { value:'4.9★', label:'Customer Rating' },
+          { value:'24hr', label:'Response Time' },
+        ];
+        return (
+          <div className="bg-[#0B4DAB] text-white py-6">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                {stats.map((s,i) => (
+                  <div key={i}>
+                    <div className="text-3xl font-extrabold text-[#8CCB00]">{s.value}</div>
+                    <div className="text-sm font-semibold text-blue-200 mt-1">{s.label}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        );
+      }
+
+      /* ══════════════════════════════════════════════════
+         SERVICES
+      ══════════════════════════════════════════════════ */
+
+      function Services({ onBookClick }) {
+        const [activeStep, setActiveStep] = useState(0);
+
+        const steps = [
+          {
+            title: "1. Dewatering",
+            short: "Emptying Sump/Tank",
+            desc: "We begin by draining all existing water from the tank using safe suction pumps, preparing the floor and walls for manual sludge extraction.",
+            icon: (
+              <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+              </svg>
+            )
+          },
+          {
+            title: "2. Sludge Removal",
+            short: "Extracting Mud & Sediment",
+            desc: "Manual and mechanical extraction of heavy sludge, mud deposits, fungus, and settled dirt layers accumulated at the bottom of the structure.",
+            icon: (
+              <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+              </svg>
+            )
+          },
+          {
+            title: "3. High-Pressure Washing",
+            short: "Deep Wall Scrubbing",
+            desc: "We apply a high-pressure jet stream (up to 120 bar) to blast off stubborn stains, mold, algae growth, and mineral scaling from all interior walls and corners.",
+            icon: (
+              <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+              </svg>
+            )
+          },
+          {
+            title: "4. Vacuum Cleaning",
+            short: "Removing Dirty Residues",
+            desc: "High-power industrial vacuum suction is used to extract all remaining dirty water and tiny loose sediment particles left over from the scrubbing process.",
+            icon: (
+              <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+              </svg>
+            )
+          },
+          {
+            title: "5. Anti-Bacterial Spray",
+            short: "Sterilizing Inner Walls",
+            desc: "We spray a premium, eco-safe, food-grade anti-bacterial solution uniformly over the entire surface area to neutralize hidden spores and bacteria.",
+            icon: (
+              <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+              </svg>
+            )
+          },
+          {
+            title: "6. UV Disinfection",
+            short: "Final Purification Sweep",
+            desc: "The final safeguard. A custom ultraviolet germicidal radiator is lowered into the tank to neutralize any floating pathogens or waterborne micro-critters.",
+            icon: (
+              <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m0-12.728l.707.707m12.728 12.728l.707-.707M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+            )
+          }
+        ];
+
+        const services = [
+          { id:'overhead', title:'Overhead Tank Cleaning', price:'₹499 onwards',
+            desc:'High-pressure washing, sludge removal & UV disinfection of PVC, plastic, and concrete tanks.',
+            icon:<svg className="w-10 h-10 text-[#0B4DAB]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>},
+          { id:'underground', title:'Underground Tank Cleaning', price:'₹1200 onwards',
+            desc:'Complete dewatering, sludge extraction & anti-bacterial scrub for concrete sumps.',
+            icon:<svg className="w-10 h-10 text-[#0B4DAB]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>},
+          { id:'drum', title:'Drum Tank Cleaning', price:'₹150 onwards',
+            desc:'Quick sanitization of domestic water drums, small storage units. Removes mold & sticky layers.',
+            icon:<svg className="w-10 h-10 text-[#0B4DAB]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>},
+          { id:'disinfection', title:'Disinfection & Sanitization', price:'Contact for Quote',
+            desc:'6-stage sanitization with eco-friendly chlorine compounds, anti-bacterial sprays & UV disinfection.',
+            icon:<svg className="w-10 h-10 text-[#0B4DAB]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>},
+          { id:'apartment', title:'Apartment Packages', price:'₹5000 onwards',
+            desc:'Bulk packages for apartment complexes & societies. Comprehensive schedule for all tanks & sumps.',
+            icon:<svg className="w-10 h-10 text-[#0B4DAB]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>},
+        ];
+
+        return (
+          <section id="services" className="py-20 bg-slate-50">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="text-center max-w-3xl mx-auto mb-16">
+                <h2 className="text-base font-semibold text-[#0B4DAB] uppercase tracking-wider">Our Services</h2>
+                <p className="mt-2 text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Comprehensive Water Storage Cleaning</p>
+                <p className="mt-4 text-lg text-slate-600">Scientific 6-stage process ensuring water is clean, pure & free of deadly microorganisms.</p>
+              </div>
+
+              {/* Services Grid */}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
+                {services.map(s => (
+                  <div key={s.id} className="bg-white rounded-3xl p-8 shadow-md border border-slate-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex flex-col justify-between">
+                    <div>
+                      <div className="p-4 bg-blue-50 rounded-2xl w-fit mb-6">{s.icon}</div>
+                      <h3 className="text-xl font-bold text-slate-900 mb-3">{s.title}</h3>
+                      <p className="text-slate-600 text-sm leading-relaxed mb-6">{s.desc}</p>
+                    </div>
+                    <div className="pt-6 border-t border-slate-100 flex items-center justify-between">
+                      <div>
+                        <span className="text-xs text-slate-400 block font-medium">Starting from</span>
+                        <span className="text-[#0B4DAB] font-extrabold text-lg">{s.price}</span>
+                      </div>
+                      <button onClick={() => onBookClick(s.id)} className="bg-slate-50 hover:bg-[#0B4DAB] text-[#0B4DAB] hover:text-white font-bold py-2.5 px-5 rounded-full border border-slate-200 hover:border-transparent transition-all duration-300 text-sm">
+                        Book Now
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Interactive 6-Stage Process Walkthrough Visualizer */}
+              <div className="bg-white rounded-3xl p-8 sm:p-12 border border-slate-100 shadow-lg">
+                <div className="text-center max-w-2xl mx-auto mb-10">
+                  <span className="text-xs font-bold text-[#8CCB00] uppercase tracking-widest bg-green-50 px-3.5 py-1.5 rounded-full border border-green-100 font-sans">
+                    Scientific Sanitization
+                  </span>
+                  <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-4 font-sans">
+                    Our Multi-Stage Cleaning Walkthrough
+                  </h3>
+                  <p className="text-slate-500 text-sm mt-2 font-sans">
+                    Select a stage below to see how Ganesh's team cleans your tank step by step.
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+                  {/* Step Selection Buttons */}
+                  <div className="lg:col-span-4 flex flex-col justify-start space-y-2">
+                    {steps.map((s, idx) => (
+                      <button
+                        key={idx}
+                        onClick={() => setActiveStep(idx)}
+                        className={`w-full text-left px-5 py-4 rounded-2xl border transition-all duration-200 flex items-center space-x-3.5 ${
+                          activeStep === idx
+                            ? 'border-[#0B4DAB] bg-blue-50/50 shadow-sm'
+                            : 'border-slate-100 hover:bg-slate-50 text-slate-600'
+                        }`}
+                      >
+                        <span className={`w-8 h-8 rounded-full font-bold text-xs flex items-center justify-center shrink-0 transition-colors ${
+                          activeStep === idx ? 'bg-[#0B4DAB] text-white' : 'bg-slate-100 text-slate-500'
+                        }`}>
+                          {idx + 1}
+                        </span>
+                        <div className="overflow-hidden">
+                          <span className={`text-sm font-bold block ${activeStep === idx ? 'text-[#0B4DAB]' : 'text-slate-800'}`}>
+                            {s.title.substring(3)}
+                          </span>
+                          <span className="text-[11px] text-slate-400 block truncate">{s.short}</span>
+                        </div>
+                      </button>
+                    ))}
+                  </div>
+
+                  {/* Description Display Card */}
+                  <div className="lg:col-span-8 bg-gradient-to-br from-slate-50 to-blue-50/40 border border-slate-100 rounded-3xl p-8 flex flex-col justify-between relative overflow-hidden min-h-[300px]">
+                    <div className="absolute right-0 bottom-0 text-[#0B4DAB]/5 transform translate-x-8 translate-y-8 scale-[2] pointer-events-none">
+                      {steps[activeStep].icon}
+                    </div>
+
+                    <div className="space-y-6 relative z-10">
+                      <div className="inline-flex p-4 bg-white rounded-2xl shadow-sm text-[#0B4DAB] border border-blue-50">
+                        {steps[activeStep].icon}
+                      </div>
+                      <div>
+                        <span className="text-xs text-[#8CCB00] font-bold uppercase tracking-wider block mb-1 font-sans">
+                          Stage {activeStep + 1}
+                        </span>
+                        <h4 className="text-2xl font-extrabold text-slate-900 leading-tight font-sans">
+                          {steps[activeStep].title}
+                        </h4>
+                        <p className="text-slate-600 text-sm sm:text-base leading-relaxed mt-4 max-w-xl font-sans">
+                          {steps[activeStep].desc}
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Progress visualizer footer bar */}
+                    <div className="pt-8 border-t border-slate-200/50 mt-8 flex flex-wrap gap-4 items-center justify-between z-10">
+                      <div className="flex space-x-1.5">
+                        {steps.map((_, idx) => (
+                          <div
+                            key={idx}
+                            className={`h-2.5 rounded-full transition-all duration-300 ${
+                              idx === activeStep ? 'w-8 bg-[#0B4DAB]' : 'w-2.5 bg-slate-200'
+                            }`}
+                          />
+                        ))}
+                      </div>
+                      <div className="flex space-x-2">
+                        <button
+                          disabled={activeStep === 0}
+                          onClick={() => setActiveStep(prev => prev - 1)}
+                          className="p-2 rounded-xl bg-white border border-slate-200 text-slate-600 hover:bg-slate-50 disabled:opacity-40 transition-all"
+                        >
+                          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M15 19l-7-7 7-7"/>
+                          </svg>
+                        </button>
+                        <button
+                          disabled={activeStep === steps.length - 1}
+                          onClick={() => setActiveStep(prev => prev + 1)}
+                          className="p-2 rounded-xl bg-[#0B4DAB] text-white hover:bg-blue-800 disabled:opacity-40 transition-all"
+                        >
+                          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7"/>
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        );
+      }
+
+      /* ══════════════════════════════════════════════════
+         WHY CHOOSE US
+      ══════════════════════════════════════════════════ */
+      function WhyChooseUs() {
+        const points = [
+          { title:'Safe Water', bg:'bg-blue-50', desc:'Family-safe water free from heavy metals, rust & dust. We restore purity.', icon:<svg className="w-8 h-8 text-[#0B4DAB]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg> },
+          { title:'Germ Free', bg:'bg-green-50', desc:'99.9% bacteria, virus & larvae elimination using eco-safe sanitizers.', icon:<svg className="w-8 h-8 text-[#8CCB00]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg> },
+          { title:'Affordable', bg:'bg-yellow-50', desc:'Honest upfront pricing with zero surprises. Premium quality within budget.', icon:<svg className="w-8 h-8 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> },
+          { title:'Experienced Team', bg:'bg-purple-50', desc:'Background-verified, trained professionals with full safety gear.', icon:<svg className="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg> },
+          { title:'Fast Service', bg:'bg-red-50', desc:'On-time arrival & fast execution minimizing disruption to your day.', icon:<svg className="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg> },
+          { title:'100% Satisfaction', bg:'bg-teal-50', desc:'We guarantee results. Not happy? We clean again — for free!', icon:<svg className="w-8 h-8 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> },
+        ];
+        return (
+          <section id="about" className="py-20 bg-white relative overflow-hidden">
+            <div className="absolute right-0 bottom-0 w-80 h-80 bg-blue-50 rounded-full opacity-30 filter blur-3xl"></div>
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+              <div className="text-center max-w-3xl mx-auto mb-16">
+                <h2 className="text-base font-semibold text-[#0B4DAB] uppercase tracking-wider">Why Choose Us</h2>
+                <p className="mt-2 text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Designed for Pure, Sanitized Living</p>
+                <p className="mt-4 text-lg text-slate-600">Professional sanitation engineered for Bangalore's water conditions, led by <strong>Ganesh</strong> and team.</p>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {points.map((p,i) => (
+                  <div key={i} className="bg-white hover:bg-slate-50 border border-slate-100 rounded-3xl p-8 hover:shadow-lg transition-all duration-300 group">
+                    <div className={`p-4 rounded-2xl w-fit ${p.bg} mb-6 group-hover:scale-110 transition-transform duration-300`}>{p.icon}</div>
+                    <h3 className="text-lg font-bold text-slate-900 mb-2">{p.title}</h3>
+                    <p className="text-slate-600 text-sm leading-relaxed">{p.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        );
+      }
+
+      /* ══════════════════════════════════════════════════
+         PRICING  (with Price Calculator)
+      ══════════════════════════════════════════════════ */
+      function Pricing({ onBookClick }) {
+        const [tankType, setTankType] = useState('overhead');
+        const [capacity, setCapacity] = useState(1000);
+        const [numTanks, setNumTanks] = useState(1);
+        const calcPrice = () => {
+          if (tankType === 'drum') return 150 * numTanks;
+          const rate = tankType === 'overhead' ? 0.50 : 0.80;
+          const min  = tankType === 'overhead' ? 499 : 1200;
+          return Math.round(Math.max(min, capacity * rate * numTanks));
+        };
+        const plans = [
+          { id:'drum', name:'Drum Cleaning', price:'150', badge:'Basic', accent:'border-slate-200', btn:'bg-slate-100 hover:bg-slate-200 text-slate-800', features:['Sediment & mud removal','Hand scrubbing','Basic rinsing & drying','100L-500L drums','~15-20 minutes'] },
+          { id:'overhead', name:'Overhead Tank', price:'499', badge:'Popular', popular:true, accent:'border-[#0B4DAB] ring-4 ring-[#0B4DAB]/10', btn:'bg-[#0B4DAB] hover:bg-blue-800 text-white shadow-md', features:['High-pressure washing','Sludge & wall scrubbing','Vacuum dewatering','Chlorine sanitization','100% germ-free','PVC/Plastic tanks'] },
+          { id:'underground', name:'Underground Tank', price:'1,200', badge:'Essential', accent:'border-slate-200', btn:'bg-slate-900 hover:bg-black text-white', features:['Full sump dewatering','Heavy sludge extraction','Anti-bacterial scrub','Odor elimination','Safety harness crew','Concrete & brick'] },
+          { id:'apartment', name:'Apartment Package', price:'5,000', badge:'Best Value', accent:'border-[#8CCB00] ring-4 ring-[#8CCB00]/10', btn:'bg-[#8CCB00] hover:bg-[#78ad00] text-white shadow-md', features:['Multiple tanks & sumps','Pre-booking consult','Industrial pressure wash','pH & TDS water test','UV sanitization','Service report'] },
+        ];
+        return (
+          <section id="pricing" className="py-20 bg-slate-50">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="text-center max-w-3xl mx-auto mb-16">
+                <h2 className="text-base font-semibold text-[#0B4DAB] uppercase tracking-wider">Pricing Plans</h2>
+                <p className="mt-2 text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Transparent Pricing, No Hidden Costs</p>
+                <p className="mt-4 text-lg text-slate-600">All rates include cleaning materials. No advance payment required.</p>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 items-stretch mb-16">
+                {plans.map(p => (
+                  <div key={p.id} className={`bg-white rounded-3xl p-8 border flex flex-col justify-between relative transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl ${p.accent}`}>
+                    {p.popular && <span className="absolute top-0 right-1/2 translate-x-1/2 -translate-y-1/2 bg-[#0B4DAB] text-white text-xs font-bold uppercase tracking-wider px-4 py-1.5 rounded-full shadow-sm">Recommended</span>}
+                    <div>
+                      <span className="text-xs font-bold text-[#0B4DAB] uppercase tracking-widest bg-blue-50 px-3 py-1 rounded-full">{p.badge}</span>
+                      <h3 className="text-xl font-bold text-slate-900 mt-4">{p.name}</h3>
+                      <div className="mt-4 flex items-baseline text-slate-900">
+                        <span className="text-3xl font-extrabold">₹</span>
+                        <span className="text-5xl font-extrabold tracking-tight">{p.price}</span>
+                        <span className="ml-1 text-sm font-semibold text-slate-500">onwards</span>
+                      </div>
+                      <ul className="space-y-3 mt-6 mb-8">
+                        {p.features.map((f,i) => (
+                          <li key={i} className="flex items-start text-sm text-slate-600">
+                            <svg className="h-5 w-5 text-[#8CCB00] mr-2 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7"/></svg>
+                            <span>{f}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    <button onClick={() => onBookClick(p.id)} className={`w-full font-bold py-3.5 px-4 rounded-2xl transition-all duration-300 ${p.btn}`}>Book {p.name}</button>
+                  </div>
+                ))}
+              </div>
+
+              {/* ── Price Calculator ── */}
+              <div className="max-w-3xl mx-auto bg-white rounded-3xl p-8 border border-slate-100 shadow-lg mb-12">
+                <div className="text-center mb-8">
+                  <span className="text-xs font-bold text-[#8CCB00] uppercase tracking-widest bg-green-50 px-3.5 py-1.5 rounded-full border border-green-100">✦ Instant Estimator</span>
+                  <h3 className="text-2xl font-extrabold text-slate-900 mt-3">Price Calculator</h3>
+                  <p className="text-slate-500 text-sm mt-1">Drag the sliders to get an instant quote.</p>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                  <div className="space-y-6">
+                    <div>
+                      <label className="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-2">Tank Type</label>
+                      <div className="grid grid-cols-3 gap-2">
+                        {[['overhead','Overhead'],['underground','Underground'],['drum','Drum']].map(([val,lbl]) => (
+                          <button key={val} onClick={() => { setTankType(val); if(val==='underground'&&capacity<1000) setCapacity(2000); }} className={`py-3 px-2 rounded-xl text-xs font-bold border transition-all ${tankType===val?'border-[#0B4DAB] bg-blue-50 text-[#0B4DAB]':'border-slate-200 text-slate-600 hover:bg-slate-50'}`}>{lbl}</button>
+                        ))}
+                      </div>
+                    </div>
+                    {tankType !== 'drum' && (
+                      <div>
+                        <div className="flex justify-between items-center mb-2">
+                          <label className="text-xs font-bold text-slate-600 uppercase tracking-wider">Capacity</label>
+                          <span className="text-sm font-bold text-[#0B4DAB] bg-blue-50 px-2 py-0.5 rounded-lg">{capacity.toLocaleString()}L</span>
+                        </div>
+                        <input type="range" min={tankType==='overhead'?500:1000} max={tankType==='overhead'?5000:10000} step="500" value={capacity} onChange={e=>setCapacity(+e.target.value)} className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-[#0B4DAB]"/>
+                        <div className="flex justify-between text-[10px] text-slate-400 mt-1"><span>{tankType==='overhead'?'500L':'1000L'}</span><span>{tankType==='overhead'?'5000L':'10000L'}</span></div>
+                      </div>
+                    )}
+                    <div>
+                      <div className="flex justify-between items-center mb-2">
+                        <label className="text-xs font-bold text-slate-600 uppercase tracking-wider">Number of {tankType==='drum'?'Drums':'Tanks'}</label>
+                        <span className="text-sm font-bold text-[#0B4DAB] bg-blue-50 px-2 py-0.5 rounded-lg">{numTanks}</span>
+                      </div>
+                      <input type="range" min="1" max="10" value={numTanks} onChange={e=>setNumTanks(+e.target.value)} className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-[#0B4DAB]"/>
+                      <div className="flex justify-between text-[10px] text-slate-400 mt-1"><span>1</span><span>10</span></div>
+                    </div>
+                  </div>
+                  <div className="bg-gradient-to-br from-slate-50 to-blue-50 border border-slate-100 rounded-2xl p-7 text-center space-y-4">
+                    <span className="text-xs text-slate-400 font-bold uppercase tracking-wider">Your Estimated Price</span>
+                    <div>
+                      <span className="text-2xl font-extrabold text-slate-900">₹</span>
+                      <span className="text-6xl font-extrabold tracking-tight text-[#0B4DAB]">{calcPrice().toLocaleString()}</span>
+                      <span className="text-xs text-slate-500 font-semibold block mt-1">all-inclusive</span>
+                    </div>
+                    <p className="text-xs text-slate-500">{tankType==='drum'?'Flat ₹150/drum':`₹${tankType==='overhead'?'0.50':'0.80'}/L × ${capacity}L × ${numTanks} tank${numTanks>1?'s':''}`}</p>
+                    <button onClick={() => onBookClick(tankType)} className="w-full bg-[#0B4DAB] hover:bg-blue-800 text-white font-bold py-3 px-4 rounded-xl shadow-md transition-all text-sm">Book This Slot</button>
+                    <a href={`tel:${PHONE}`} className="block text-xs text-[#0B4DAB] font-semibold hover:underline">Or call {PHONE_DISP}</a>
+                  </div>
+                </div>
+              </div>
+
+              {/* Dynamic Water Health Diagnostic Quiz (Advanced Feature) */}
+              <WaterHealthQuiz onBook={onBookClick} />
+            </div>
+          </section>
+        );
+      }
+
+      /* ── WATER HEALTH QUIZ INNER COMPONENT ── */
+      function WaterHealthQuiz({ onBook }) {
+        const [step, setStep] = useState(0); // 0: start, 1: water type, 2: symptoms, 3: last clean, 4: results
+        const [waterSource, setWaterSource] = useState('');
+        const [symptoms, setSymptoms] = useState([]);
+        const [lastCleaned, setLastCleaned] = useState('');
+
+        const toggleSymptom = (s) => {
+          if (symptoms.includes(s)) {
+            setSymptoms(symptoms.filter(item => item !== s));
+          } else {
+            setSymptoms([...symptoms, s]);
+          }
+        };
+
+        const getDiagnostics = () => {
+          let score = 0;
+          if (waterSource === 'borewell') score += 3;
+          if (waterSource === 'mixed') score += 2;
+          if (waterSource === 'municipal') score += 1;
+
+          score += symptoms.length * 1.5;
+
+          if (lastCleaned === 'never' || lastCleaned === 'over-year') score += 3;
+          if (lastCleaned === '6-12-months') score += 1.5;
+          if (lastCleaned === 'under-6') score += 0.5;
+
+          if (score >= 6) {
+            return {
+              level: 'Critical Risk 🚨',
+              color: 'text-red-600 bg-red-50 border-red-200',
+              advice: 'Your water storage shows high vulnerability to microbial growth, heavy scaling, or sediment blockage. Immediate disinfection and cleaning is highly recommended.'
+            };
+          } else if (score >= 3.5) {
+            return {
+              level: 'Moderate Contamination Risk ⚠️',
+              color: 'text-yellow-600 bg-yellow-50 border-yellow-200',
+              advice: 'Signs of dust deposits, minor scaling, or bacterial stagnation. A standard 6-stage sanitization sweep is recommended to protect your plumbing and household health.'
+            };
+          } else {
+            return {
+              level: 'Low Risk / Maintenance Needed ✅',
+              color: 'text-green-600 bg-green-50 border-green-200',
+              advice: 'Your tank is in relatively healthy shape. We suggest a standard maintenance cleaning every 6 months to maintain this safety standard.'
+            };
+          }
+        };
+
+        const results = getDiagnostics();
+
+        return (
+          <div className="max-w-3xl mx-auto bg-gradient-to-br from-slate-900 to-blue-950 text-white rounded-3xl p-8 sm:p-12 shadow-2xl relative overflow-hidden font-sans">
+            {/* Decorative clean water background wave */}
+            <div className="absolute right-0 top-0 w-64 h-64 bg-blue-500/10 rounded-full filter blur-3xl pointer-events-none"></div>
+
+            {step === 0 && (
+              <div className="text-center space-y-6 relative z-10 py-4">
+                <span className="text-xs font-bold text-[#8CCB00] uppercase tracking-widest bg-[#8CCB00]/10 border border-[#8CCB00]/20 px-3.5 py-1.5 rounded-full font-sans">
+                  ✦ Water Quality Audit
+                </span>
+                <h3 className="text-3xl font-extrabold tracking-tight font-sans">
+                  Water Tank Health Diagnostic Quiz
+                </h3>
+                <p className="text-blue-100 text-sm max-w-lg mx-auto leading-relaxed font-sans">
+                  Answer 3 quick questions about your home water utility to diagnose scaling, sediment depth, and bacterial safety levels instantly.
+                </p>
+                <button
+                  onClick={() => setStep(1)}
+                  className="bg-[#8CCB00] hover:bg-[#78ad00] text-white font-bold py-3.5 px-8 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 inline-flex items-center space-x-2 font-sans text-sm"
+                >
+                  <span>Start Diagnostic Audit</span>
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7"/>
+                  </svg>
+                </button>
+              </div>
+            )}
+
+            {step === 1 && (
+              <div className="space-y-6 relative z-10 font-sans">
+                <div className="flex justify-between items-center text-xs font-bold uppercase tracking-wider text-blue-300">
+                  <span>Question 1 of 3</span>
+                  <span>Water Utility Source</span>
+                </div>
+                <h4 className="text-2xl font-bold font-sans">What is the primary source of water in your building?</h4>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+                  {[
+                    { id: 'municipal', title: 'Kaveri/Municipal Water', desc: 'Chlorinated, but carries supply-line mud & rust' },
+                    { id: 'borewell', title: 'Borewell Utility', desc: 'High mineral hardness, calcium deposits & scale' },
+                    { id: 'mixed', title: 'Mixed / Tanker Water', desc: 'Varying source quality, high particulate risk' }
+                  ].map(source => (
+                    <button
+                      key={source.id}
+                      onClick={() => { setWaterSource(source.id); setStep(2); }}
+                      className="p-5 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 text-left transition-all"
+                    >
+                      <span className="font-bold text-base block text-white font-sans">{source.title}</span>
+                      <span className="text-xs text-blue-200 block mt-2 leading-relaxed font-sans">{source.desc}</span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {step === 2 && (
+              <div className="space-y-6 relative z-10 font-sans">
+                <div className="flex justify-between items-center text-xs font-bold uppercase tracking-wider text-blue-300">
+                  <span>Question 2 of 3</span>
+                  <span>Visible Symptoms</span>
+                </div>
+                <h4 className="text-2xl font-bold font-sans">Are you experiencing any of these water problems? (Select all)</h4>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                  {[
+                    { id: 'scaling', title: 'Fixture Scaling', desc: 'White/chalky deposits on taps & bathroom tiles' },
+                    { id: 'odor', title: 'Damp/Stagnant Smell', desc: 'Foul odor when turning on taps' },
+                    { id: 'sediment', title: 'Suspended Particles', desc: 'Sandy sediment, rust flakes, or dark sludge in buckets' },
+                    { id: 'none', title: 'None of the above', desc: 'Water looks and smells fine' }
+                  ].map(item => {
+                    const selected = symptoms.includes(item.id);
+                    return (
+                      <button
+                        key={item.id}
+                        onClick={() => toggleSymptom(item.id)}
+                        className={`p-5 rounded-2xl text-left transition-all border ${
+                          selected
+                            ? 'bg-[#0B4DAB]/40 border-[#0B4DAB]'
+                            : 'bg-white/5 border-white/10 hover:bg-white/10'
+                        }`}
+                      >
+                        <div className="flex items-center justify-between">
+                          <span className="font-bold text-base text-white font-sans">{item.title}</span>
+                          {selected && (
+                            <span className="w-5 h-5 bg-[#8CCB00] rounded-full flex items-center justify-center text-white text-[10px]">
+                              ✓
+                            </span>
+                          )}
+                        </div>
+                        <span className="text-xs text-blue-200 block mt-2 leading-relaxed font-sans">{item.desc}</span>
+                      </button>
+                    );
+                  })}
+                </div>
+                <div className="flex justify-end pt-4">
+                  <button
+                    onClick={() => setStep(3)}
+                    className="bg-[#8CCB00] hover:bg-[#78ad00] text-white font-bold py-3 px-8 rounded-xl shadow-md text-sm font-sans"
+                  >
+                    Continue to Last Question
+                  </button>
+                </div>
+              </div>
+            )}
+
+            {step === 3 && (
+              <div className="space-y-6 relative z-10 font-sans">
+                <div className="flex justify-between items-center text-xs font-bold uppercase tracking-wider text-blue-300">
+                  <span>Question 3 of 3</span>
+                  <span>Sanitation History</span>
+                </div>
+                <h4 className="text-2xl font-bold font-sans">When was your tank or sump last professionally cleaned?</h4>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+                  {[
+                    { id: 'under-6', title: 'Under 6 Months', desc: 'Recently sanitized' },
+                    { id: '6-12-months', title: '6 – 12 Months Ago', desc: 'Due for periodic service' },
+                    { id: 'over-year', title: 'Over 1 Year / Never', desc: 'High accumulation danger' }
+                  ].map(option => (
+                    <button
+                      key={option.id}
+                      onClick={() => { setLastCleaned(option.id); setStep(4); }}
+                      className="p-5 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 text-left transition-all"
+                    >
+                      <span className="font-bold text-base block text-white font-sans">{option.title}</span>
+                      <span className="text-xs text-blue-200 block mt-2 leading-relaxed font-sans">{option.desc}</span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {step === 4 && (
+              <div className="space-y-6 relative z-10 py-2 font-sans">
+                <div className="text-center">
+                  <span className="text-xs font-bold text-[#8CCB00] uppercase tracking-widest bg-[#8CCB00]/10 border border-[#8CCB00]/20 px-3.5 py-1.5 rounded-full font-sans">
+                    ✦ Assessment Diagnostic Result
+                  </span>
+                  <h4 className="text-3xl font-extrabold mt-6 font-sans">Audit Completed!</h4>
+                </div>
+
+                <div className={`p-6 rounded-2xl border text-center space-y-3 font-sans ${results.color}`}>
+                  <span className="text-xs font-bold uppercase tracking-wider block font-sans">Diagnostics Safety Level</span>
+                  <span className="text-2xl sm:text-3xl font-black block font-sans">{results.level}</span>
+                  <p className="text-xs sm:text-sm font-semibold max-w-lg mx-auto leading-relaxed font-sans">
+                    {results.advice}
+                  </p>
+                </div>
+
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-4 font-sans">
+                  <button
+                    onClick={() => { onBook(); setStep(0); setSymptoms([]); }}
+                    className="w-full sm:w-auto bg-[#8CCB00] hover:bg-[#78ad00] text-white font-bold py-3.5 px-8 rounded-full shadow-lg hover:shadow-xl transition-all font-sans text-sm"
+                  >
+                    Book Priority Disinfection
+                  </button>
+                  <button
+                    onClick={() => { setStep(0); setSymptoms([]); }}
+                    className="w-full sm:w-auto bg-white/10 hover:bg-white/25 text-white font-bold py-3.5 px-8 rounded-full transition-all border border-white/10 font-sans text-sm"
+                  >
+                    Re-take Audit Quiz
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
+        );
+      }
+
+      /* ══════════════════════════════════════════════════
+         GALLERY
+      ══════════════════════════════════════════════════ */
+      const VIDEOS = [];
+
+
+
+      function Gallery() {
+        const items = [
+          { title:'Plastic Overhead Tank', loc:'BTM Layout, Bangalore', before:'./public/gallery/dirty_tank_1.png', after:'./public/gallery/clean_tank_1.png', desc:'Removed 3 inches of thick mud sediment and sanitized using eco-friendly disinfection sprays.' },
+          { title:'Concrete Underground Sump', loc:'Whitefield, Bangalore', before:'./public/gallery/dirty_tank_2.png', after:'./public/gallery/clean_tank_2.png', desc:'Extracted sludge, treated concrete mold, and performed high-pressure wall washing.' },
+        ];
+        return (
+          <section id="gallery" className="py-20 bg-white">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              {/* Header */}
+              <div className="text-center max-w-3xl mx-auto mb-16">
+                <h2 className="text-base font-semibold text-[#0B4DAB] uppercase tracking-wider">Before & After Gallery</h2>
+                <p className="mt-2 text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">See the Difference Machaa!</p>
+                <p className="mt-4 text-lg text-slate-600">Real, unedited photos and professional cleaning videos showing the results of our multi-stage process.</p>
+              </div>
+
+              {/* Photo gallery grid */}
+              <div className="space-y-16 mb-20">
+                {items.map((item,i) => (
+                  <div key={i} className="bg-slate-50 rounded-3xl p-6 sm:p-8 border border-slate-100 shadow-sm">
+                    <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 items-center">
+                      <div className="lg:col-span-3 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        {[['Before','border-red-100','bg-red-600',item.before],['After','border-green-100','bg-[#8CCB00]',item.after]].map(([lbl,bdr,bg,src]) => (
+                          <div key={lbl} className={`relative group overflow-hidden rounded-2xl shadow-md border ${bdr}`}>
+                            <span className={`absolute top-4 left-4 z-10 ${bg} text-white text-xs font-bold uppercase tracking-wider px-3.5 py-1.5 rounded-full`}>{lbl}</span>
+                            <img src={src} alt={lbl} className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"/>
+                          </div>
+                        ))}
+                      </div>
+                      <div className="lg:col-span-2 space-y-4">
+                        <div className="inline-flex items-center space-x-1.5 bg-blue-50 text-[#0B4DAB] text-xs font-semibold px-3 py-1 rounded-full">📍 {item.loc}</div>
+                        <h3 className="text-2xl font-extrabold text-slate-900">{item.title}</h3>
+                        <p className="text-slate-600 text-sm leading-relaxed">{item.desc}</p>
+                        <div className="flex flex-wrap gap-2 pt-2">
+                          {['✓ Sludge Removed','✓ Pressure Washed','✓ Disinfected'].map(t=>(
+                            <span key={t} className="bg-white border border-slate-200 text-slate-700 text-xs font-semibold px-3 py-1.5 rounded-lg shadow-sm">{t}</span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* ─── Video Gallery ─── */}
+              <div className="border-t border-slate-100 pt-20">
+                <div className="text-center max-w-2xl mx-auto mb-12">
+                  <span className="text-xs font-bold text-[#8CCB00] uppercase tracking-widest bg-green-50 px-4 py-1.5 rounded-full border border-green-100">
+                    ▶ Cleaning Videos
+                  </span>
+                  <p className="mt-4 text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+                    Watch Us Work — Live Proof!
+                  </p>
+                  <p className="mt-3 text-slate-500 text-base">
+                    Real professional sump & overhead tank cleaning jobs — from sludge to spotless!
+                  </p>
+                </div>
+                <div className="bg-gradient-to-br from-slate-50 to-blue-50/40 border border-slate-100 rounded-3xl p-12 text-center">
+                  <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-md">
+                    <svg className="w-10 h-10 text-[#0B4DAB]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                    </svg>
+                  </div>
+                  <h3 className="text-2xl font-extrabold text-slate-900 mb-3">Cleaning Videos Coming Soon</h3>
+                  <p className="text-slate-500 text-sm max-w-md mx-auto mb-6">We are currently filming our own professional tank cleaning process videos. Check back shortly to see our team in action!</p>
+                  <span className="inline-flex items-center gap-2 text-xs font-bold text-[#8CCB00] bg-green-50 border border-green-100 px-4 py-2 rounded-full">
+                    <span className="w-2 h-2 bg-[#8CCB00] rounded-full animate-pulse"></span>
+                    New videos uploading soon
+                  </span>
+                </div>
+                <p className="text-center text-xs text-slate-400 mt-8 font-medium">
+                  Real project videos will be added here once available.
+                </p>
+              </div>
+
+            </div>
+          </section>
+        );
+      }
+
+      /* ══════════════════════════════════════════════════
+         TESTIMONIALS
+      ══════════════════════════════════════════════════ */
+      function Testimonials() {
+        const reviews = [
+          { name:'Ganesh', role:'Homeowner', loc:'BTM Layout, Bangalore', quote:'Excellent service! Very professional team. Cleaned our overhead tank and sump in record time. Highly recommended!', init:'G', color:'bg-blue-100 text-[#0B4DAB]' },
+          { name:'Priyanka', role:'Apartment Committee', loc:'Whitefield, Bangalore', quote:'Booked the Apartment Package for our society. Organized team, full safety gear, and the water test report gave us confidence.', init:'P', color:'bg-green-100 text-green-700' },
+          { name:'Rahul', role:'Villa Owner', loc:'Indiranagar, Bangalore', quote:'No mess left behind! They vacuumed out the sludge and treated the walls with sanitizers. Solid job Machaa!', init:'R', color:'bg-yellow-100 text-yellow-700' },
+        ];
+        return (
+          <section className="py-20 bg-slate-50 relative overflow-hidden">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+              <div className="text-center max-w-3xl mx-auto mb-16">
+                <h2 className="text-base font-semibold text-[#0B4DAB] uppercase tracking-wider">Testimonials</h2>
+                <p className="mt-2 text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Loved By Bengaluru Families</p>
+                <p className="mt-4 text-lg text-slate-600">Real feedback from real customers across Bangalore.</p>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {reviews.map((r,i) => (
+                  <div key={i} className="bg-white rounded-3xl p-8 border border-slate-100 shadow-md flex flex-col justify-between hover:shadow-lg transition-shadow">
+                    <div>
+                      <div className="flex items-center space-x-1 mb-5">
+                        {[...Array(5)].map((_,j)=><svg key={j} className="w-5 h-5 text-amber-400 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>)}
+                      </div>
+                      <p className="text-slate-600 italic text-sm leading-relaxed mb-6">"{r.quote}"</p>
+                    </div>
+                    <div className="flex items-center space-x-4 pt-5 border-t border-slate-100">
+                      <div className={`w-12 h-12 rounded-full font-bold flex items-center justify-center text-lg ${r.color} shrink-0`}>{r.init}</div>
+                      <div>
+                        <h4 className="font-bold text-slate-900 text-sm">{r.name}</h4>
+                        <span className="text-xs text-slate-500 block">{r.role}</span>
+                        <span className="text-[10px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded-full font-medium mt-1 inline-block">{r.loc}</span>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        );
+      }
+
+      /* ══════════════════════════════════════════════════
+         FAQ  (new section)
+      ══════════════════════════════════════════════════ */
+      function Faq() {
+        const [active, setActive] = useState(null);
+        const faqs = [
+          { q:'How often should I get my water tank cleaned?', a:'We recommend cleaning every 6 months for Bangalore municipal/borewell water. Regular cleaning prevents mud deposits, algae growth & contaminants from entering your tap water.' },
+          { q:'What is your multi-stage cleaning process?', a:'Our 6-stage process: 1) High-pressure dewatering, 2) Complete sludge removal, 3) Wall scrubbing, 4) Vacuum suction, 5) Anti-bacterial spray, 6) Chemical rinse & quality check.' },
+          { q:'How long does tank cleaning take?', a:'A standard overhead tank (500–1000L) takes 45–60 mins. A concrete underground sump (1000–3000L) takes 1.5–2 hours depending on sludge thickness.' },
+          { q:'Do you charge extra for travel or chemicals?', a:'No. All prices include travel within Bangalore and all cleaning chemicals. What you see is what you pay — zero hidden charges.' },
+          { q:'Is the sanitization agent safe for drinking water?', a:'Yes. We use food-grade biodegradable sanitizers. After cleaning the tank is thoroughly rinsed, leaving water completely safe, odor-free & pure.' },
+          { q:'Do you serve BTM Layout and surrounding areas?', a:'Absolutely! We are based in BTM Layout and cover all of Bangalore including Jayanagar, JP Nagar, HSR Layout, Koramangala, Whitefield, Indiranagar & more.' },
+        ];
+        return (
+          <section className="py-20 bg-white">
+            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="text-center mb-16">
+                <h2 className="text-base font-semibold text-[#0B4DAB] uppercase tracking-wider">FAQ</h2>
+                <p className="mt-2 text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Got Questions? We Clean Doubts!</p>
+              </div>
+              <div className="space-y-3">
+                {faqs.map((faq,i) => (
+                  <div key={i} className="border border-slate-100 rounded-2xl bg-slate-50 overflow-hidden shadow-sm">
+                    <button onClick={() => setActive(active===i?null:i)} className="w-full px-6 py-5 text-left flex items-center justify-between font-bold text-slate-800 hover:text-[#0B4DAB] focus:outline-none transition-colors">
+                      <span className="text-sm sm:text-base pr-4">{faq.q}</span>
+                      <span className={`transform transition-transform duration-300 shrink-0 text-[#0B4DAB] ${active===i?'rotate-180':''}`}>
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M19 9l-7 7-7-7"/></svg>
+                      </span>
+                    </button>
+                    <div className={`transition-all duration-300 overflow-hidden ${active===i?'max-h-60 border-t border-slate-200/50':'max-h-0'}`}>
+                      <div className="px-6 py-5 text-slate-600 text-sm leading-relaxed bg-white">{faq.a}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        );
+      }
+
+      /* ══════════════════════════════════════════════════
+         BOOKING
+      ══════════════════════════════════════════════════ */
+      function Booking({ selectedService }) {
+        const GANESH = '919014538584';
+        const SVC_LABELS = { overhead:'Overhead Tank Cleaning', underground:'Underground Tank Cleaning', drum:'Drum Tank Cleaning', disinfection:'Disinfection & Sanitization', apartment:'Apartment Package' };
+        const SIZE_LABELS = { small:'Below 500 Litres', medium:'500L – 1,000 Litres', large:'1,000L – 3,000 Litres', xlarge:'3,000L – 5,000 Litres', commercial:'Above 5,000 Litres' };
+
+        const [fd, setFd] = useState({ name:'', mobile:'', serviceType:'', tankSize:'', address:'', date:'' });
+        const [status, setStatus] = useState('');
+        const [loading, setLoading] = useState(false);
+
+        useEffect(() => { if(selectedService) setFd(p=>({...p,serviceType:selectedService})); }, [selectedService]);
+        const handle = e => setFd({...fd,[e.target.name]:e.target.value});
+
+        const sendWA = (data) => {
+          const msg = encodeURIComponent(
+            `🚿 *NEW BOOKING — Tank Clean Machaa!*\n\n` +
+            `👤 *Name:* ${data.name}\n📱 *Mobile:* ${data.mobile}\n` +
+            `🛠 *Service:* ${SVC_LABELS[data.serviceType]||data.serviceType}\n` +
+            `🪣 *Tank Size:* ${SIZE_LABELS[data.tankSize]||data.tankSize}\n` +
+            `📍 *Address:* ${data.address}\n📅 *Date:* ${data.date}\n\n` +
+            `Please confirm the slot and call the customer back. Machaa! 💧`
+          );
+          window.open(`https://wa.me/${GANESH}?text=${msg}`, '_blank');
+        };
+
+        const submit = e => {
+          e.preventDefault();
+          if(!fd.name||!fd.mobile||!fd.serviceType||!fd.tankSize||!fd.address||!fd.date){ setStatus('error'); return; }
+          setLoading(true);
+          setTimeout(() => { sendWA(fd); setStatus('success'); setLoading(false); }, 800);
+        };
+
+        const reset = () => { setFd({name:'',mobile:'',serviceType:'',tankSize:'',address:'',date:''}); setStatus(''); };
+
+        return (
+          <section id="booking" className="py-20 bg-gradient-to-br from-blue-50 to-white">
+            <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="bg-white rounded-3xl shadow-xl overflow-hidden border border-slate-100 grid grid-cols-1 lg:grid-cols-12">
+                {/* Left panel */}
+                <div className="lg:col-span-5 bg-gradient-to-br from-[#0B4DAB] to-blue-900 text-white p-8 sm:p-12 flex flex-col justify-between">
+                  <div className="space-y-6">
+                    <span className="text-xs font-bold uppercase tracking-widest text-[#8CCB00] bg-[#8CCB00]/10 px-3.5 py-1.5 rounded-full border border-[#8CCB00]/20">Book in 60 seconds</span>
+                    <h3 className="text-3xl font-extrabold">Schedule Your Cleaning</h3>
+                    <p className="text-blue-100 text-sm leading-relaxed">Fill out the form. Ganesh gets your booking via WhatsApp instantly and calls you back within 15 minutes to confirm your slot!</p>
+                    <div className="space-y-5 pt-4">
+                      {['Provide tank size & address','Submit — Ganesh gets WhatsApp alert 📲','Ganesh calls to confirm your slot!'].map((s,i)=>(
+                        <div key={i} className="flex items-center space-x-4">
+                          <div className="w-8 h-8 rounded-full bg-white/10 font-bold flex items-center justify-center shrink-0">{i+1}</div>
+                          <span className="text-sm font-semibold">{s}</span>
+                        </div>
+                      ))}
+                    </div>
+                    {/* WhatsApp badge */}
+                    <div className="flex items-center gap-3 bg-white/10 rounded-2xl px-4 py-3 border border-white/15">
+                      <svg className="w-7 h-7 shrink-0 fill-[#8CCB00]" viewBox="0 0 24 24"><path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984a9.96 9.96 0 001.333 4.982L2 22l5.202-1.362a9.92 9.92 0 004.808 1.226h.003c5.502 0 9.99-4.479 9.99-9.987A9.96 9.96 0 0012.012 2zm6.09 13.98c-.25.707-1.447 1.3-1.983 1.385-.494.08-1.139.145-3.32-.74-2.793-1.13-4.6-3.965-4.737-4.153-.14-.188-1.12-1.485-1.12-2.83 0-1.348.705-2.012.955-2.28.25-.268.54-.336.722-.336.182 0 .365.002.522.01.163.008.38-.063.595.453.22.53.753 1.838.818 1.97.066.133.11.288.02.466-.09.18-.135.29-.27.447-.133.156-.28.35-.4.5-.133.167-.272.35-.117.618.155.267.69 1.13 1.48 1.834.72.64 1.326.837 1.636.966.31.13.49.108.673-.102.183-.21.785-.912.996-1.222.21-.31.42-.26.705-.152.285.11 1.808.853 2.118.998.31.144.516.216.59.34.075.127.075.734-.176 1.44z"/></svg>
+                      <div>
+                        <p className="text-xs text-blue-100 font-medium">Booking alert sent via WhatsApp</p>
+                        <p className="text-white text-xs font-bold">Ganesh replies within minutes!</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="pt-10 text-xs text-blue-200 border-t border-white/10 flex justify-between items-center mt-8">
+                    <span>Questions? Call directly:</span>
+                    <a href={`tel:${PHONE}`} className="text-[#8CCB00] font-bold hover:underline">{PHONE_DISP}</a>
+                  </div>
+                </div>
+
+                {/* Right panel */}
+                <div className="lg:col-span-7 p-8 sm:p-12">
+                  {status==='success' ? (
+                    <div className="h-full flex flex-col justify-center items-center text-center py-10 space-y-5">
+                      <div className="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center shadow-lg">
+                        <svg className="w-14 h-14 text-[#8CCB00]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7"/></svg>
+                      </div>
+                      <h4 className="text-3xl font-extrabold text-slate-900">Booking Sent! 🎉</h4>
+                      <p className="text-slate-600 text-sm max-w-sm leading-relaxed">
+                        Your booking for <strong>{fd.date}</strong> has been sent to <strong>Ganesh</strong> via WhatsApp. He will call you back shortly to confirm your slot!
+                      </p>
+                      <div className="w-full max-w-sm bg-[#8CCB00]/10 border border-[#8CCB00]/30 rounded-2xl px-5 py-4 text-left space-y-1">
+                        <div className="flex items-center gap-2">
+                          <span className="text-[#8CCB00] text-lg">📲</span>
+                          <span className="text-xs font-black text-slate-700 uppercase tracking-wide">WhatsApp Alert Sent to Ganesh</span>
+                        </div>
+                        <p className="text-xs text-slate-500 pl-7">Booking details delivered instantly to his phone.</p>
+                      </div>
+                      <div className="flex flex-col sm:flex-row gap-3 pt-2 w-full max-w-sm">
+                        <a href={`tel:${PHONE}`} className="flex-1 flex items-center justify-center gap-2 bg-[#0B4DAB] hover:bg-blue-800 text-white font-bold py-3 px-5 rounded-xl shadow-md text-sm">
+                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                          Call Ganesh Now
+                        </a>
+                        <a href={`https://wa.me/${GANESH}?text=${encodeURIComponent('Hi Ganesh! I just submitted a booking on your website. Please confirm my slot!')}`} target="_blank" rel="noopener noreferrer" className="flex-1 flex items-center justify-center gap-2 bg-[#8CCB00] hover:bg-[#78ad00] text-white font-bold py-3 px-5 rounded-xl shadow-md text-sm">
+                          <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984a9.96 9.96 0 001.333 4.982L2 22l5.202-1.362a9.92 9.92 0 004.808 1.226h.003c5.502 0 9.99-4.479 9.99-9.987A9.96 9.96 0 0012.012 2zm6.09 13.98c-.25.707-1.447 1.3-1.983 1.385-.494.08-1.139.145-3.32-.74-2.793-1.13-4.6-3.965-4.737-4.153-.14-.188-1.12-1.485-1.12-2.83 0-1.348.705-2.012.955-2.28.25-.268.54-.336.722-.336.182 0 .365.002.522.01.163.008.38-.063.595.453.22.53.753 1.838.818 1.97.066.133.11.288.02.466-.09.18-.135.29-.27.447-.133.156-.28.35-.4.5-.133.167-.272.35-.117.618.155.267.69 1.13 1.48 1.834.72.64 1.326.837 1.636.966.31.13.49.108.673-.102.183-.21.785-.912.996-1.222.21-.31.42-.26.705-.152.285.11 1.808.853 2.118.998.31.144.516.216.59.34.075.127.075.734-.176 1.44z"/></svg>
+                          WhatsApp Ganesh
+                        </a>
+                      </div>
+                      <button onClick={reset} className="text-slate-400 hover:text-slate-600 text-xs font-semibold underline mt-2">Book Another Slot</button>
+                    </div>
+                  ) : (
+                    <div>
+                      <h4 className="text-xl font-bold text-slate-900 mb-6">Booking Details</h4>
+                      {status==='error'&&<div className="p-4 rounded-xl mb-5 text-sm font-medium bg-red-50 text-red-800 border border-red-200">Please fill all required fields.</div>}
+                      <form onSubmit={submit} className="space-y-5">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                          {[['name','text','Name','Your Name'],['mobile','tel','Mobile',PHONE_DISP.replace('+91 ','')]].map(([n,t,l,ph])=>(
+                            <div key={n}>
+                              <label className="block text-xs font-bold text-slate-600 uppercase tracking-wide mb-2">{l} *</label>
+                              <input type={t} name={n} value={fd[n]} onChange={handle} className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#0B4DAB]" placeholder={ph} required/>
+                            </div>
+                          ))}
+                        </div>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                          <div>
+                            <label className="block text-xs font-bold text-slate-600 uppercase tracking-wide mb-2">Service Type *</label>
+                            <select name="serviceType" value={fd.serviceType} onChange={handle} className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#0B4DAB]" required>
+                              <option value="">Select Service</option>
+                              <option value="overhead">Overhead Tank Cleaning</option>
+                              <option value="underground">Underground Tank Cleaning</option>
+                              <option value="drum">Drum Tank Cleaning</option>
+                              <option value="disinfection">Disinfection & Sanitization</option>
+                              <option value="apartment">Apartment Package</option>
+                            </select>
+                          </div>
+                          <div>
+                            <label className="block text-xs font-bold text-slate-600 uppercase tracking-wide mb-2">Tank Size *</label>
+                            <select name="tankSize" value={fd.tankSize} onChange={handle} className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#0B4DAB]" required>
+                              <option value="">Select Capacity</option>
+                              <option value="small">Below 500 Litres</option>
+                              <option value="medium">500L – 1,000 Litres</option>
+                              <option value="large">1,000L – 3,000 Litres</option>
+                              <option value="xlarge">3,000L – 5,000 Litres</option>
+                              <option value="commercial">Above 5,000 Litres</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div>
+                          <label className="block text-xs font-bold text-slate-600 uppercase tracking-wide mb-2">Service Address *</label>
+                          <input type="text" name="address" value={fd.address} onChange={handle} className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#0B4DAB]" placeholder="Door No, Street, Area, Bangalore" required/>
+                        </div>
+                        <div>
+                          <label className="block text-xs font-bold text-slate-600 uppercase tracking-wide mb-2">Preferred Date *</label>
+                          <input type="date" name="date" value={fd.date} onChange={handle} className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#0B4DAB]" required/>
+                        </div>
+                        <button type="submit" disabled={loading} className="w-full bg-[#0B4DAB] hover:bg-blue-800 text-white font-bold py-3.5 px-6 rounded-xl shadow-md disabled:opacity-50 flex items-center justify-center gap-2 transition-all">
+                          {loading ? (
+                            <><svg className="animate-spin h-5 w-5 text-white" fill="none" viewBox="0 0 24 24"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"/></svg><span>Sending to Ganesh...</span></>
+                          ) : (
+                            <><svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984a9.96 9.96 0 001.333 4.982L2 22l5.202-1.362a9.92 9.92 0 004.808 1.226h.003c5.502 0 9.99-4.479 9.99-9.987A9.96 9.96 0 0012.012 2zm6.09 13.98c-.25.707-1.447 1.3-1.983 1.385-.494.08-1.139.145-3.32-.74-2.793-1.13-4.6-3.965-4.737-4.153-.14-.188-1.12-1.485-1.12-2.83 0-1.348.705-2.012.955-2.28.25-.268.54-.336.722-.336.182 0 .365.002.522.01.163.008.38-.063.595.453.22.53.753 1.838.818 1.97.066.133.11.288.02.466-.09.18-.135.29-.27.447-.133.156-.28.35-.4.5-.133.167-.272.35-.117.618.155.267.69 1.13 1.48 1.834.72.64 1.326.837 1.636.966.31.13.49.108.673-.102.183-.21.785-.912.996-1.222.21-.31.42-.26.705-.152.285.11 1.808.853 2.118.998.31.144.516.216.59.34.075.127.075.734-.176 1.44z"/></svg><span>Book & Notify Ganesh on WhatsApp 📲</span></>
+                          )}
+                        </button>
+                        <p className="text-center text-xs text-slate-400 font-medium">✅ No advance payment • Ganesh calls back within 15 mins</p>
+                      </form>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          </section>
+        );
+      }
+
+
+
+      /* ══════════════════════════════════════════════════
+         CONTACT
+      ══════════════════════════════════════════════════ */
+      function Contact() {
+        const [fd, setFd] = useState({ name:'', phone:'', serviceType:'', address:'', message:'' });
+        const [status, setStatus] = useState({ type:'', text:'' });
+        const [loading, setLoading] = useState(false);
+        const handle = e => setFd({...fd,[e.target.name]:e.target.value});
+        const submit = e => {
+          e.preventDefault();
+          if(!fd.name||!fd.phone||!fd.serviceType||!fd.address){ setStatus({type:'error',text:'Please fill in all required fields.'}); return; }
+          setLoading(true);
+          const msg = `Hi Ganesh! I would like to make an inquiry:%0A- Name: ${fd.name}%0A- Phone: ${fd.phone}%0A- Service: ${fd.serviceType}%0A- Address: ${fd.address}%0A- Message: ${fd.message}`;
+          
+          // Open WhatsApp link in new tab
+          window.open(`${WA_BASE}${msg}`, '_blank');
+          
+          setStatus({type:'success',text:'Redirecting to WhatsApp to complete your inquiry...'});
+          setFd({name:'',phone:'',serviceType:'',address:'',message:''});
+          setLoading(false);
+        };
+        const cards = [
+          { href:`tel:${PHONE}`, label:'Call Ganesh', value:PHONE_DISP, icon:<svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>, bg:'bg-blue-100 text-[#0B4DAB]', hover:'hover:border-blue-200' },
+          { href:`${WA_BASE}Hi%20Tank%20Clean%20Machaa!%20I'd%20like%20to%20know%20more.`, label:'WhatsApp', value:PHONE_DISP, icon:<svg className="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984a9.96 9.96 0 001.333 4.982L2 22l5.202-1.362a9.92 9.92 0 004.808 1.226h.003c5.502 0 9.99-4.479 9.99-9.987A9.96 9.96 0 0012.012 2zm6.09 13.98c-.25.707-1.447 1.3-1.983 1.385-.494.08-1.139.145-3.32-.74-2.793-1.13-4.6-3.965-4.737-4.153-.14-.188-1.12-1.485-1.12-2.83 0-1.348.705-2.012.955-2.28.25-.268.54-.336.722-.336.182 0 .365.002.522.01.163.008.38-.063.595.453.22.53.753 1.838.818 1.97.066.133.11.288.02.466-.09.18-.135.29-.27.447-.133.156-.28.35-.4.5-.133.167-.272.35-.117.618.155.267.69 1.13 1.48 1.834.72.64 1.326.837 1.636.966.31.13.49.108.673-.102.183-.21.785-.912.996-1.222.21-.31.42-.26.705-.152.285.11 1.808.853 2.118.998.31.144.516.216.59.34.075.127.075.734-.176 1.44z"/></svg>, bg:'bg-green-100 text-[#8CCB00]', hover:'hover:border-green-200', ext:true },
+          { href:'mailto:ganesh@tankcleanmachaa.com', label:'Email', value:'ganesh@tankcleanmachaa.com', icon:<svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>, bg:'bg-blue-100 text-[#0B4DAB]', hover:'hover:border-blue-200' },
+        ];
+        return (
+          <section id="contact" className="py-20 bg-white">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="text-center max-w-3xl mx-auto mb-16">
+                <h2 className="text-base font-semibold text-[#0B4DAB] uppercase tracking-wider">Contact Us</h2>
+                <p className="mt-2 text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Connect With Our Cleaning Experts</p>
+                <p className="mt-4 text-lg text-slate-600">Reach out to <strong>Ganesh</strong> directly — we respond fast!</p>
+              </div>
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                <div className="lg:col-span-5 space-y-5">
+                  <h3 className="text-2xl font-bold text-slate-900 mb-6">Contact Info</h3>
+                  {cards.map((c,i)=>(
+                    <a key={i} href={c.href} target={c.ext?'_blank':undefined} rel={c.ext?'noopener noreferrer':undefined} className={`block p-6 rounded-2xl bg-slate-50 border border-slate-100 ${c.hover} shadow-sm transition-all group`}>
+                      <div className="flex items-center space-x-4">
+                        <div className={`p-3.5 ${c.bg} rounded-xl shrink-0 group-hover:scale-105 transition-transform`}>{c.icon}</div>
+                        <div>
+                          <span className="text-xs text-slate-500 font-bold block uppercase tracking-wide">{c.label}</span>
+                          <span className="text-slate-900 font-bold text-base">{c.value}</span>
+                        </div>
+                      </div>
+                    </a>
+                  ))}
+                  <div className="p-6 rounded-2xl bg-slate-50 border border-slate-100 shadow-sm space-y-4">
+                    <div className="flex items-start space-x-4">
+                      <div className="p-3.5 bg-[#0B4DAB]/10 text-[#0B4DAB] rounded-xl shrink-0">
+                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                      </div>
+                      <div>
+                        <span className="text-xs text-slate-500 font-bold block uppercase tracking-wide">Office Address</span>
+                        <span className="text-slate-950 font-bold text-sm block mt-1">Tank Clean Machaa!</span>
+                        <span className="text-slate-600 text-sm block mt-0.5 leading-relaxed">
+                          1st Stage, BTM Layout,<br/>Near Metro Station,<br/>Bangalore - 560029
+                        </span>
+                      </div>
+                    </div>
+                    <div className="w-full h-44 rounded-xl overflow-hidden border border-slate-200">
+                      <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.6019835025!2d77.60986087480847!3d12.913700187398853!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae151c2fa28d8d%3A0x8d39f988e2f6c614!2sBTM%201st%20Stage%2C%20BTM%20Layout%2C%20Bengaluru%2C%20Karnataka%20560029!5e0!3m2!1sen!2sin!4v1706000000000!5m2!1sen!2sin" 
+                        width="100%" 
+                        height="100%" 
+                        style={{ border: 0 }} 
+                        allowFullScreen="" 
+                        loading="lazy" 
+                        referrerPolicy="no-referrer-when-downgrade"
+                        title="Tank Clean Machaa! Map Location"
+                      ></iframe>
+                    </div>
+                  </div>
+                </div>
+                <div className="lg:col-span-7 bg-slate-50 border border-slate-100 rounded-3xl p-8 shadow-sm">
+                  <h3 className="text-2xl font-bold text-slate-900 mb-6">Send an Inquiry</h3>
+                  {status.text&&<div className={`p-4 rounded-xl mb-5 text-sm font-medium ${status.type==='success'?'bg-green-50 text-green-800 border border-green-200':'bg-red-50 text-red-800 border border-red-200'}`}>{status.text}</div>}
+                  <form onSubmit={submit} className="space-y-5">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                      {[['name','text','Name','Your Name'],['phone','tel','Phone',PHONE_DISP.replace('+91 ','')]].map(([n,t,l,ph])=>(
+                        <div key={n}>
+                          <label className="block text-xs font-bold text-slate-600 uppercase tracking-wide mb-2">{l} *</label>
+                          <input type={t} name={n} value={fd[n]} onChange={handle} className="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#0B4DAB]" placeholder={ph} required/>
+                        </div>
+                      ))}
+                    </div>
+                    <div>
+                      <label className="block text-xs font-bold text-slate-600 uppercase tracking-wide mb-2">Service Type *</label>
+                      <select name="serviceType" value={fd.serviceType} onChange={handle} className="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#0B4DAB]" required>
+                        <option value="">Select Service</option>
+                        <option value="overhead">Overhead Tank Cleaning</option>
+                        <option value="underground">Underground Tank Cleaning</option>
+                        <option value="drum">Drum Tank Cleaning</option>
+                        <option value="disinfection">Disinfection & Sanitization</option>
+                        <option value="apartment">Apartment Package</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label className="block text-xs font-bold text-slate-600 uppercase tracking-wide mb-2">Address *</label>
+                      <input type="text" name="address" value={fd.address} onChange={handle} className="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#0B4DAB]" placeholder="Street, Area, Bangalore" required/>
+                    </div>
+                    <div>
+                      <label className="block text-xs font-bold text-slate-600 uppercase tracking-wide mb-2">Message</label>
+                      <textarea name="message" rows="3" value={fd.message} onChange={handle} className="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#0B4DAB]" placeholder="Any special requirements..."></textarea>
+                    </div>
+                    <button type="submit" disabled={loading} className="w-full bg-[#0B4DAB] hover:bg-blue-800 text-white font-bold py-3.5 px-6 rounded-xl shadow-md disabled:opacity-50 transition-all">
+                      {loading?'Sending...':'Send via WhatsApp 📲'}
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </section>
+        );
+      }
+
+      /* ══════════════════════════════════════════════════
+         FOOTER
+      ══════════════════════════════════════════════════ */
+      function Footer({ onBookClick }) {
+        const quickLinks = [
+          {name:'Home',href:'#home'},{name:'Services',href:'#services'},{name:'Pricing',href:'#pricing'},
+          {name:'Gallery',href:'#gallery'},{name:'About Us',href:'#about'},{name:'Contact',href:'#contact'},
+        ];
+        const servLinks = [
+          'Overhead Tank Cleaning','Underground Sump Cleaning','Drum Tank Cleaning',
+          'Disinfection & Sanitization','Apartment Bulk Packages',
+        ];
+        return (
+          <footer className="bg-slate-900 text-slate-400 pt-16 pb-8 border-t border-slate-800">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 pb-12 border-b border-slate-800">
+                <div className="lg:col-span-4 space-y-4">
+                  <a href="#home" className="flex items-center space-x-2">
+                    <img className="h-11 w-auto object-contain bg-white p-1 rounded-lg" src="./public/logo.png" alt="Tank Clean Machaa!"/>
+                    <span className="text-xl font-extrabold text-white">Tank Clean <span className="text-[#8CCB00]">Machaa!</span></span>
+                  </a>
+                  <p className="text-sm leading-relaxed">Bangalore's premium professional water tank cleaning experts. Based in BTM Layout. Led by <span className="text-white font-semibold">Ganesh</span>.</p>
+                  <div className="flex items-center space-x-3 pt-2">
+                    {['fb','ig','tw'].map(s=>(
+                      <a key={s} href="#" className="p-2 bg-slate-800 text-slate-300 hover:text-[#8CCB00] rounded-lg transition-colors">
+                        <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                          {s==='fb'&&<path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.56-.93 8-4.96 8-9.75z"/>}
+                          {s==='ig'&&<path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>}
+                          {s==='tw'&&<path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>}
+                        </svg>
+                      </a>
+                    ))}
+                  </div>
+                </div>
+                <div className="lg:col-span-2 space-y-4">
+                  <h4 className="text-white font-bold text-sm uppercase tracking-wider">Quick Links</h4>
+                  <ul className="space-y-2 text-sm">
+                    {quickLinks.map(l=><li key={l.name}><a href={l.href} className="hover:text-[#8CCB00] transition-colors">{l.name}</a></li>)}
+                  </ul>
+                </div>
+                <div className="lg:col-span-3 space-y-4">
+                  <h4 className="text-white font-bold text-sm uppercase tracking-wider">Services</h4>
+                  <ul className="space-y-2 text-sm">
+                    {servLinks.map(s=><li key={s}><a href="#services" className="hover:text-[#8CCB00] transition-colors">{s}</a></li>)}
+                  </ul>
+                </div>
+                <div className="lg:col-span-3 space-y-4">
+                  <h4 className="text-white font-bold text-sm uppercase tracking-wider">Contact Info</h4>
+                  <ul className="space-y-3 text-sm">
+                    <li className="flex items-start"><span className="text-[#8CCB00] mr-2 mt-0.5">📍</span><span>{ADDRESS_SHORT}</span></li>
+                    <li className="flex items-center"><span className="text-[#8CCB00] mr-2">📞</span><a href={`tel:${PHONE}`} className="hover:text-white transition-colors">{PHONE_DISP}</a></li>
+                    <li className="flex items-center"><span className="text-[#8CCB00] mr-2">✉</span><a href="mailto:ganesh@tankcleanmachaa.com" className="hover:text-white transition-colors">ganesh@tankcleanmachaa.com</a></li>
+                    <li className="flex items-center"><span className="text-[#8CCB00] mr-2">👤</span><span className="text-white font-semibold">Owner: Ganesh</span></li>
+                  </ul>
+                </div>
+              </div>
+              <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500">
+                <p>© {new Date().getFullYear()} Tank Clean Machaa! — Ganesh. All rights reserved.</p>
+                <div className="flex space-x-6 mt-4 sm:mt-0">
+                  <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
+                  <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
+                </div>
+              </div>
+            </div>
+          </footer>
+        );
+      }
+
+      /* ══════════════════════════════════════════════════
+         FLOATING ACTIONS
+      ══════════════════════════════════════════════════ */
+      function FloatingActions() {
+        const [feedIdx, setFeedIdx] = useState(0);
+        const [visible, setVisible] = useState(false);
+        const [scrollProgress, setScrollProgress] = useState(0);
+        const [showScrollTop, setShowScrollTop] = useState(false);
+
+        const feeds = [
+          { loc: "BTM Layout, 2nd Stage", job: "Overhead PVC Tank (1,000L) cleaned", time: "12 mins ago" },
+          { loc: "HSR Layout, Sector 3", job: "Underground Concrete Sump (4,500L) disinfected", time: "24 mins ago" },
+          { loc: "Jayanagar, 4th Block", job: "3x Domestic Water Drums sanitized", time: "48 mins ago" },
+          { loc: "Koramangala, 5th Block", job: "Apartment Bulk Sump (12,000L) cleaned", time: "1 hour ago" },
+          { loc: "JP Nagar, Phase 2", job: "Overhead Tank UV Disinfection completed", time: "2 hours ago" },
+          { loc: "Indiranagar, 100ft Rd", job: "Concrete Sump Dewatering & Wash completed", time: "3 hours ago" },
+          { loc: "Whitefield, near Hope Farm", job: "Society Overhead Tanks bulk-sanitized", time: "4 hours ago" }
+        ];
+
+        useEffect(() => {
+          const showTimer = setTimeout(() => setVisible(true), 2500);
+
+          const interval = setInterval(() => {
+            setVisible(false);
+            setTimeout(() => {
+              setFeedIdx((prev) => (prev + 1) % feeds.length);
+              setVisible(true);
+            }, 600);
+          }, 7000);
+
+          const handleScroll = () => {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+            setScrollProgress(Math.min(progress, 100));
+            setShowScrollTop(scrollTop > 400);
+          };
+
+          window.addEventListener('scroll', handleScroll, { passive: true });
+
+          return () => {
+            clearTimeout(showTimer);
+            clearInterval(interval);
+            window.removeEventListener('scroll', handleScroll);
+          };
+        }, []);
+
+        const scrollToTop = () => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        };
+
+        return (
+          <React.Fragment>
+            {/* Scroll Progress Bar */}
+            <div className="fixed top-0 left-0 right-0 h-1 bg-transparent z-50 pointer-events-none">
+              <div
+                className="h-full bg-gradient-to-r from-[#0B4DAB] to-[#8CCB00] transition-all duration-150 ease-out"
+                style={{ width: `${scrollProgress}%` }}
+              />
+            </div>
+
+            {/* Dynamic Bangalore Live Cleanings Feed (Social Proof) */}
+            <div className={`fixed bottom-6 left-6 z-40 max-w-sm transition-all duration-500 transform ${
+              visible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-4 scale-95 pointer-events-none'
+            }`}>
+              <div className="bg-slate-900/95 backdrop-blur-md text-white px-5 py-4 rounded-2xl shadow-xl border border-white/10 flex items-center space-x-3.5">
+                <div className="w-10 h-10 rounded-full bg-[#8CCB00]/10 flex items-center justify-center text-[#8CCB00] shrink-0 border border-[#8CCB00]/20 relative">
+                  <span className="absolute -top-0.5 -right-0.5 w-3 h-3 bg-green-500 rounded-full border border-slate-900 animate-ping"></span>
+                  <span className="absolute -top-0.5 -right-0.5 w-3 h-3 bg-green-500 rounded-full border border-slate-900"></span>
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7"/>
+                  </svg>
+                </div>
+                <div className="overflow-hidden font-sans">
+                  <span className="text-[10px] text-[#8CCB00] font-black uppercase tracking-widest block font-sans">✦ Recent Clean in Bangalore</span>
+                  <span className="text-xs font-bold text-white block mt-0.5 leading-tight truncate font-sans">{feeds[feedIdx].job}</span>
+                  <div className="flex items-center justify-between mt-1 text-[10px] text-slate-400 font-medium font-sans">
+                    <span className="truncate">📍 {feeds[feedIdx].loc}</span>
+                    <span className="shrink-0 ml-3">{feeds[feedIdx].time}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Floating Action Buttons */}
+            <div className="fixed bottom-6 right-6 z-40 flex flex-col space-y-3 animate-fade-in">
+              {/* Back to Top Button */}
+              <button
+                onClick={scrollToTop}
+                aria-label="Back to top"
+                className={`flex items-center justify-center w-10 h-10 bg-white/90 hover:bg-white text-slate-700 rounded-full shadow-lg border border-slate-200 transition-all duration-300 ${
+                  showScrollTop ? 'opacity-100 scale-100' : 'opacity-0 scale-75 pointer-events-none'
+                }`}
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
+                </svg>
+              </button>
+
+              <a href={`tel:${PHONE}`} className="flex items-center justify-center w-14 h-14 bg-[#0B4DAB] hover:bg-blue-800 text-white rounded-full shadow-2xl transition-all duration-300 hover:scale-105 group relative" aria-label="Call Us">
+                <span className="absolute right-16 bg-slate-900 text-white text-xs font-bold px-3 py-1.5 rounded-lg opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity whitespace-nowrap shadow-md">{PHONE_DISP}</span>
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+              </a>
+              <a href={`${WA_BASE}Hi%20Tank%20Clean%20Machaa!%20I%20want%20to%20book%20a%20tank%20cleaning%20slot.`} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center w-14 h-14 bg-[#8CCB00] hover:bg-[#78ad00] text-white rounded-full shadow-2xl transition-all duration-300 hover:scale-105 group relative" aria-label="WhatsApp">
+                <span className="absolute right-16 bg-slate-900 text-white text-xs font-bold px-3 py-1.5 rounded-lg opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity whitespace-nowrap shadow-md">WhatsApp Machaa!</span>
+                <span className="absolute inset-0 rounded-full border-2 border-[#8CCB00] animate-ping opacity-40"></span>
+                <svg className="w-6 h-6 fill-current relative z-10" viewBox="0 0 24 24"><path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984a9.96 9.96 0 001.333 4.982L2 22l5.202-1.362a9.92 9.92 0 004.808 1.226h.003c5.502 0 9.99-4.479 9.99-9.987A9.96 9.96 0 0012.012 2zm6.09 13.98c-.25.707-1.447 1.3-1.983 1.385-.494.08-1.139.145-3.32-.74-2.793-1.13-4.6-3.965-4.737-4.153-.14-.188-1.12-1.485-1.12-2.83 0-1.348.705-2.012.955-2.28.25-.268.54-.336.722-.336.182 0 .365.002.522.01.163.008.38-.063.595.453.22.53.753 1.838.818 1.97.066.133.11.288.02.466-.09.18-.135.29-.27.447-.133.156-.28.35-.4.5-.133.167-.272.35-.117.618.155.267.69 1.13 1.48 1.834.72.64 1.326.837 1.636.966.31.13.49.108.673-.102.183-.21.785-.912.996-1.222.21-.31.42-.26.705-.152.285.11 1.808.853 2.118.998.31.144.516.216.59.34.075.127.075.734-.176 1.44z"/></svg>
+              </a>
+            </div>
+          </React.Fragment>
+        );
+      }
+
+      /* ══════════════════════════════════════════════════
+         PLANNER & TDS SCALE (Free Safety Tools)
+      ══════════════════════════════════════════════════ */
+      function Planner({ onBook }) {
+        const [tds, setTds] = useState(150);
+        const [sumpType, setSumpType] = useState('individual');
+        const [waterSource, setWaterSource] = useState('municipal');
+        const [capacity, setCapacity] = useState(2000);
+        const [generated, setGenerated] = useState(false);
+        const [schedule, setSchedule] = useState([]);
+
+        const getTdsAdvice = (value) => {
+          if (value <= 150) {
+            return {
+              rating: "Excellent (Safe) ✅",
+              color: "text-green-600 bg-green-50 border-green-200",
+              advice: "Water is soft and highly pure. Sump cleaning recommended once every 6 months to prevent micro-sediment accumulation."
+            };
+          } else if (value <= 300) {
+            return {
+              rating: "Good (Acceptable) 👍",
+              color: "text-[#0B4DAB] bg-blue-50 border-blue-200",
+              advice: "Safe for household utility. Clean every 6 months to maintain this standard and prevent scaling."
+            };
+          } else if (value <= 500) {
+            return {
+              rating: "Hard Water / Moderate Risk ⚠️",
+              color: "text-yellow-600 bg-yellow-50 border-yellow-200",
+              advice: "Mineral deposits and white scaling will accumulate rapidly. Sump and tank cleaning recommended every 4-5 months."
+            };
+          } else {
+            return {
+              rating: "Critical Hardness / High Risk 🚨",
+              color: "text-red-600 bg-red-50 border-red-200",
+              advice: "Dangerous scaling, rust risk, and high sediment buildup. Sump cleaning is recommended every 3 months. Consider a water softener."
+            };
+          }
+        };
+
+        const tdsResult = getTdsAdvice(tds);
+
+        const generateSchedule = (e) => {
+          e.preventDefault();
+          const deepCleanInterval = waterSource === 'borewell' ? 4 : 6;
+          const testInterval = 3;
+          const meshCheckInterval = 2;
+
+          const list = [];
+          const baseMonth = new Date().getMonth();
+          const months = [
+            "January", "February", "March", "April", "May", "June", 
+            "July", "August", "September", "October", "November", "December"
+          ];
+
+          for (let i = 1; i <= 12; i++) {
+            const currentMonthIndex = (baseMonth + i) % 12;
+            const mName = months[currentMonthIndex];
+            const items = [];
+
+            if (i % deepCleanInterval === 0) {
+              items.push("🚿 Professional Sump Deep Clean & Disinfection (Tank Clean Machaa!)");
+            }
+            if (i % testInterval === 0) {
+              items.push("🔬 Water TDS & pH level health test");
+            }
+            if (i % meshCheckInterval === 0) {
+              items.push("🧹 Clean water inlet mesh filter & check float valve functionality");
+            }
+
+            if (items.length > 0) {
+              list.push({ month: mName, tasks: items });
+            }
+          }
+          setSchedule(list);
+          setGenerated(true);
+        };
+
+        return (
+          <section id="planner" className="py-20 bg-white">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="text-center max-w-3xl mx-auto mb-16">
+                <h2 className="text-base font-semibold text-[#0B4DAB] uppercase tracking-wider font-sans">Free Safety Tools</h2>
+                <p className="mt-2 text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight font-sans">
+                  TDS Safety Widget & Maintenance Planner
+                </p>
+                <p className="mt-4 text-lg text-slate-600 font-sans">
+                  Interactive utilities to diagnose water hardness and structure custom cleaning calendars.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                {/* TDS Scale Widget */}
+                <div className="lg:col-span-5 bg-slate-50 border border-slate-100 rounded-3xl p-8 shadow-sm space-y-6">
+                  <div>
+                    <span className="text-xs font-bold text-[#0B4DAB] uppercase tracking-widest bg-blue-50 px-3.5 py-1.5 rounded-full font-sans">
+                      ✦ TDS Scale Audit
+                    </span>
+                    <h3 className="text-2xl font-bold text-slate-900 mt-4 font-sans">TDS Safety Calculator</h3>
+                    <p className="text-slate-500 text-xs mt-1 font-sans">Enter your water's TDS (Total Dissolved Solids) in ppm.</p>
+                  </div>
+
+                  <div className="space-y-4">
+                    <div className="flex justify-between items-center">
+                      <span className="text-xs font-bold text-slate-600 uppercase tracking-wider font-sans">TDS Level</span>
+                      <span className="text-lg font-black text-[#0B4DAB] bg-blue-100 px-3 py-1 rounded-xl font-sans">{tds} ppm</span>
+                    </div>
+
+                    <input
+                      type="range"
+                      min="50"
+                      max="800"
+                      step="25"
+                      value={tds}
+                      onChange={(e) => setTds(Number(e.target.value))}
+                      className="w-full h-2.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-[#0B4DAB]"
+                    />
+
+                    <div className="flex text-[9px] font-bold uppercase tracking-wider text-center text-white h-5.5 rounded-lg overflow-hidden select-none font-sans">
+                      <div className="flex-1 bg-green-500 flex items-center justify-center">Safe</div>
+                      <div className="flex-1 bg-blue-500 flex items-center justify-center">Good</div>
+                      <div className="flex-1 bg-yellow-500 flex items-center justify-center">Fair</div>
+                      <div className="flex-1 bg-red-500 flex items-center justify-center">Hard</div>
+                    </div>
+                  </div>
+
+                  <div className={`p-6 rounded-2xl border text-center space-y-2.5 transition-all duration-300 font-sans ${tdsResult.color}`}>
+                    <span className="text-[10px] uppercase font-bold tracking-widest font-sans">Water Safety Grade</span>
+                    <span className="text-xl font-extrabold block font-sans">{tdsResult.rating}</span>
+                    <p className="text-xs font-semibold leading-relaxed font-sans">
+                      {tdsResult.advice}
+                    </p>
+                  </div>
+
+                  <button
+                    onClick={() => onBook('disinfection')}
+                    className="w-full bg-[#0B4DAB] hover:bg-blue-800 text-white font-bold py-3.5 px-6 rounded-2xl shadow-md text-xs transition-all font-sans"
+                  >
+                    Get Free TDS Water Test at Home
+                  </button>
+                </div>
+
+                {/* Sump Maintenance Planner */}
+                <div className="lg:col-span-7 bg-slate-50 border border-slate-100 rounded-3xl p-8 shadow-sm">
+                  <div>
+                    <span className="text-xs font-bold text-[#8CCB00] uppercase tracking-widest bg-green-50 px-3.5 py-1.5 rounded-full border border-green-100 font-sans">
+                      ✦ Custom Scheduler
+                    </span>
+                    <h3 className="text-2xl font-bold text-slate-900 mt-4 font-sans">Sump Maintenance Planner</h3>
+                    <p className="text-slate-500 text-xs mt-1 font-sans">Generate a custom hygiene calendar for your storage structure.</p>
+                  </div>
+
+                  <form onSubmit={generateSchedule} className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-6">
+                    <div>
+                      <label className="block text-[10px] font-bold text-slate-500 uppercase tracking-wide mb-1.5 font-sans">Building Type</label>
+                      <select
+                        value={sumpType}
+                        onChange={(e) => setSumpType(e.target.value)}
+                        className="w-full bg-white border border-slate-200 rounded-xl px-3 py-2.5 text-xs text-slate-800 focus:outline-none focus:ring-1 focus:ring-[#0B4DAB] font-sans"
+                      >
+                        <option value="individual">Individual Sump</option>
+                        <option value="apartment">Apartment Society</option>
+                        <option value="commercial">Commercial Hub</option>
+                      </select>
+                    </div>
+
+                    <div>
+                      <label className="block text-[10px] font-bold text-slate-500 uppercase tracking-wide mb-1.5 font-sans">Water Source</label>
+                      <select
+                        value={waterSource}
+                        onChange={(e) => setWaterSource(e.target.value)}
+                        className="w-full bg-white border border-slate-200 rounded-xl px-3 py-2.5 text-xs text-slate-800 focus:outline-none focus:ring-1 focus:ring-[#0B4DAB] font-sans"
+                      >
+                        <option value="municipal">Kaveri / Municipal</option>
+                        <option value="borewell">Borewell Utility</option>
+                        <option value="mixed">Mixed Tankers</option>
+                      </select>
+                    </div>
+
+                    <div>
+                      <label className="block text-[10px] font-bold text-slate-500 uppercase tracking-wide mb-1.5 font-sans">Sump Capacity</label>
+                      <select
+                        value={capacity}
+                        onChange={(e) => setCapacity(Number(e.target.value))}
+                        className="w-full bg-white border border-slate-200 rounded-xl px-3 py-2.5 text-xs text-slate-800 focus:outline-none focus:ring-1 focus:ring-[#0B4DAB] font-sans"
+                      >
+                        <option value="1000">1,000 Litres</option>
+                        <option value="2000">2,000 Litres</option>
+                        <option value="5000">5,000 Litres</option>
+                        <option value="10000">10,000+ Litres</option>
+                      </select>
+                    </div>
+
+                    <div className="sm:col-span-3 pt-2">
+                      <button
+                        type="submit"
+                        className="w-full bg-[#8CCB00] hover:bg-[#78ad00] text-white font-bold py-3 px-6 rounded-xl shadow-md text-xs transition-all font-sans"
+                      >
+                        Generate 12-Month Maintenance Calendar
+                      </button>
+                    </div>
+                  </form>
+
+                  {generated && (
+                    <div className="mt-8 pt-8 border-t border-slate-200/50 space-y-4">
+                      <div className="flex justify-between items-center">
+                        <h4 className="text-sm font-bold text-slate-800 font-sans">Your Generated Calendar</h4>
+                        <button
+                          onClick={() => window.print()}
+                          className="text-[10px] font-bold text-[#0B4DAB] hover:underline font-sans"
+                        >
+                          🖨 Print / Save Notice
+                        </button>
+                      </div>
+
+                      <div className="space-y-2.5 max-h-60 overflow-y-auto pr-1">
+                        {schedule.map((item, idx) => (
+                          <div key={idx} className="bg-white border border-slate-100 rounded-xl p-4 space-y-2 shadow-xs">
+                            <span className="text-xs font-bold text-[#0B4DAB] bg-blue-50 px-2 py-0.5 rounded-md font-sans">
+                              {item.month}
+                            </span>
+                            <ul className="space-y-1.5">
+                              {item.tasks.map((task, i) => (
+                                <li key={i} className="text-xs text-slate-600 flex items-start font-sans">
+                                  <span className="text-[#8CCB00] mr-1.5 shrink-0">✦</span>
+                                  <span>{task}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          </section>
+        );
+      }
+
+      /* ══════════════════════════════════════════════════
+         SERVICE COVERAGE AREAS
+      ══════════════════════════════════════════════════ */
+      function ServiceAreas({ onBook }) {
+        const [hoveredArea, setHoveredArea] = React.useState(null);
+        const areas = [
+          'BTM Layout', 'HSR Layout', 'Koramangala', 'Indiranagar', 'JP Nagar',
+          'Jayanagar', 'Whitefield', 'Electronic City', 'Marathahalli', 'Yelahanka',
+          'Hebbal', 'Banashankari', 'Rajajinagar', 'Malleswaram', 'Nagarbhavi',
+          'Uttarahalli', 'Bommanahalli', 'Sarjapur Road', 'Bellandur', 'KR Puram',
+          'Basavanagudi', 'Vijayanagar', 'Madiwala', 'Bommasandra', 'Begur',
+          'Banaswadi', 'Ramamurthy Nagar', 'Domlur', 'Ejipura', 'Chamrajpet',
+        ];
+        return (
+          <section id="areas" className="py-20 bg-gradient-to-br from-slate-50 to-blue-50/30 relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-96 h-96 bg-blue-100 rounded-full opacity-20 filter blur-3xl -mr-40 -mt-40 pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-80 h-80 bg-green-50 rounded-full opacity-30 filter blur-2xl -ml-20 -mb-20 pointer-events-none" />
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+              <div className="text-center max-w-3xl mx-auto mb-16">
+                <h2 className="text-base font-semibold text-[#0B4DAB] uppercase tracking-wider">Service Coverage</h2>
+                <p className="mt-2 text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Serving All of Bangalore</p>
+                <p className="mt-4 text-lg text-slate-600">We cover 30+ localities across Bengaluru. Call us to check real-time availability for your exact location.</p>
+              </div>
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+                <div className="lg:col-span-7">
+                  <div className="bg-white rounded-3xl p-8 border border-slate-100 shadow-md">
+                    <h3 className="text-lg font-bold text-slate-900 mb-6 flex items-center gap-2">
+                      <svg className="w-5 h-5 text-[#0B4DAB]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                      Areas We Service
+                    </h3>
+                    <div className="flex flex-wrap gap-2.5">
+                      {areas.map((area, i) => (
+                        <button
+                          key={i}
+                          onMouseEnter={() => setHoveredArea(i)}
+                          onMouseLeave={() => setHoveredArea(null)}
+                          className={`px-4 py-2 rounded-full text-sm font-semibold border transition-all duration-200 ${
+                            hoveredArea === i
+                              ? 'bg-[#0B4DAB] text-white border-[#0B4DAB] shadow-md scale-105'
+                              : 'bg-slate-50 text-slate-700 border-slate-200 hover:border-[#0B4DAB]/40 hover:bg-blue-50'
+                          }`}
+                        >
+                          📍 {area}
+                        </button>
+                      ))}
+                    </div>
+                    <div className="mt-8 pt-6 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+                      <p className="text-slate-500 text-sm">Don't see your area? <strong className="text-slate-700">Call us</strong> — we likely cover it!</p>
+                      <a href={`tel:${PHONE}`} className="shrink-0 inline-flex items-center gap-2 bg-[#0B4DAB] hover:bg-blue-800 text-white font-bold py-2.5 px-5 rounded-full text-sm transition-all shadow-md hover:shadow-lg">
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                        Check Availability
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div className="lg:col-span-5 space-y-5">
+                  <div className="bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-md">
+                    <div className="px-6 pt-5 pb-3">
+                      <h3 className="text-sm font-bold text-slate-900 flex items-center gap-1.5">
+                        <span className="w-2.5 h-2.5 rounded-full bg-[#8CCB00] animate-pulse inline-block" />
+                        Our Location — BTM Layout, Bangalore
+                      </h3>
+                    </div>
+                    <div className="relative w-full" style={{ paddingTop: '62%' }}>
+                      <iframe
+                        className="absolute inset-0 w-full h-full"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.6019835025!2d77.60986087480847!3d12.913700187398853!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae151c2fa28d8d%3A0x8d39f988e2f6c614!2sBTM%201st%20Stage%2C%20BTM%20Layout%2C%20Bengaluru%2C%20Karnataka%20560029!5e0!3m2!1sen!2sin!4v1706000000000!5m2!1sen!2sin"
+                        style={{ border: 0 }}
+                        allowFullScreen=""
+                        loading="lazy"
+                        referrerPolicy="no-referrer-when-downgrade"
+                        title="Tank Clean Machaa! Location — BTM Layout, Bangalore"
+                      />
+                    </div>
+                    <div className="px-6 py-4 bg-slate-50 border-t border-slate-100">
+                      <p className="text-xs text-slate-500 font-medium">📍 1st Stage, BTM Layout, Near Metro Station, Bangalore - 560029</p>
+                      <a href="https://maps.google.com/?q=BTM+Layout+1st+Stage+Bangalore" target="_blank" rel="noopener noreferrer" className="text-xs text-[#0B4DAB] font-bold hover:underline mt-1 block">Open in Google Maps →</a>
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-2 gap-4">
+                    {[
+                      { value: '30+', label: 'Areas Covered', icon: '🗺️' },
+                      { value: '< 24hr', label: 'Avg Response', icon: '⚡' },
+                      { value: 'Mon–Sun', label: 'Working Days', icon: '📅' },
+                      { value: '7am–7pm', label: 'Working Hours', icon: '🕐' },
+                    ].map((s, i) => (
+                      <div key={i} className="bg-white rounded-2xl p-4 border border-slate-100 shadow-sm text-center">
+                        <div className="text-xl mb-1">{s.icon}</div>
+                        <div className="text-lg font-extrabold text-[#0B4DAB]">{s.value}</div>
+                        <div className="text-xs text-slate-500 font-medium">{s.label}</div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        );
+      }
+
+      /* ══════════════════════════════════════════════════
+         APP ROOT
+      ══════════════════════════════════════════════════ */
+      function App() {
+        const [selected, setSelected] = useState('');
+        const book = (id='') => {
+          setSelected(id);
+          const el = document.getElementById('booking');
+          if(el) el.scrollIntoView({ behavior:'smooth' });
+        };
+        return (
+          <div className="min-h-screen bg-slate-50 flex flex-col">
+            <Navbar onBookClick={()=>book()} />
+            <main className="flex-grow">
+              <Hero onBookClick={()=>book()} />
+              <StatsBar />
+              <Services onBookClick={book} />
+              <WhyChooseUs />
+              <Pricing onBookClick={book} />
+              <Gallery />
+              <Testimonials />
+              <ServiceAreas onBook={book} />
+              <Planner onBook={book} />
+              <Faq />
+              <Booking selectedService={selected} />
+              <Contact />
+            </main>
+            <Footer onBookClick={()=>book()} />
+            <FloatingActions />
+          </div>
+        );
+      }
+
+      ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+    </script>
+  </body>
+</html>
