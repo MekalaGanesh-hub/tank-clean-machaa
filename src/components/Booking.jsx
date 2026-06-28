@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { PHONE_RAW, PHONE, EMAIL, ADDRESS, OWNER, WHATSAPP_URL, API_BOOKING_ENDPOINT } from '../constants';
+import { PHONE_RAW, PHONE, EMAIL, ADDRESS, OWNER, WHATSAPP_URL } from '../constants';
 
 const SERVICE_LABELS = {
   overhead: 'Overhead Tank Cleaning',
@@ -27,7 +27,6 @@ export default function Booking({ selectedService, onClose }) {
     date: ''
   });
   const [status, setStatus] = useState('');
-  const [submitting, setSubmitting] = useState(false);
 
   useEffect(() => {
     if (selectedService) {
@@ -39,48 +38,29 @@ export default function Booking({ selectedService, onClose }) {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const sendWhatsAppNotification = (data) => {
-    const svcLabel = SERVICE_LABELS[data.serviceType] || data.serviceType;
-    const sizeLabel = SIZE_LABELS[data.tankSize] || data.tankSize;
-    const msg = encodeURIComponent(
-      `🚿 *NEW BOOKING — Tank Clean Machaa!*\n\n` +
-      `👤 *Name:* ${data.name}\n` +
-      `📱 *Mobile:* ${data.mobile}\n` +
-      `🛠 *Service:* ${svcLabel}\n` +
-      `🪣 *Tank Size:* ${sizeLabel}\n` +
-      `📍 *Address:* ${data.address}\n` +
-      `📅 *Date:* ${data.date}\n\n` +
-      `Please confirm the slot and call the customer back. Machaa! 💧`
+  const getWhatsAppLink = () => {
+    const svcLabel = SERVICE_LABELS[formData.serviceType] || formData.serviceType;
+    const sizeLabel = SIZE_LABELS[formData.tankSize] || formData.tankSize;
+    const text = encodeURIComponent(
+      `New Booking - Tank Clean Machaa!\n\n` +
+      `Name: ${formData.name}\n` +
+      `Mobile: ${formData.mobile}\n` +
+      `Service: ${svcLabel}\n` +
+      `Tank Size: ${sizeLabel}\n` +
+      `Address: ${formData.address}\n` +
+      `Date: ${formData.date}\n\n` +
+      `Please confirm the slot.`
     );
-    window.open(`${WHATSAPP_URL}?text=${msg}`, '_blank');
+    return `${WHATSAPP_URL}?text=${text}`;
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     if (!formData.name || !formData.mobile || !formData.serviceType || !formData.tankSize || !formData.address || !formData.date) {
       setStatus('error');
       return;
     }
-    setSubmitting(true);
-    
-    try {
-      const response = await fetch(API_BOOKING_ENDPOINT, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
-      });
-      
-      if (!response.ok) {
-        throw new Error('API request failed');
-      }
-      
-      setStatus('success');
-    } catch (error) {
-      console.error("Booking error:", error);
-      setStatus('api-error');
-    } finally {
-      setSubmitting(false);
-    }
+    setStatus('success');
   };
 
   const resetForm = () => {
@@ -108,7 +88,7 @@ export default function Booking({ selectedService, onClose }) {
               <div className="space-y-5 pt-4">
                 {[
                   'Provide tank size & address',
-                  'Submit — Ganesh gets WhatsApp alert 📲',
+                  'Submit — Ganesh gets WhatsApp alert',
                   'Ganesh calls you to confirm slot!'
                 ].map((s, i) => (
                   <div key={i} className="flex items-center space-x-4">
@@ -117,7 +97,6 @@ export default function Booking({ selectedService, onClose }) {
                   </div>
                 ))}
               </div>
-              {/* Alert badge */}
               <div className="flex items-center gap-3 bg-white/10 rounded-2xl px-4 py-3 border border-white/15">
                 <svg className="w-7 h-7 shrink-0 text-[#8CCB00]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -157,6 +136,15 @@ export default function Booking({ selectedService, onClose }) {
                 </div>
                 <div className="flex flex-col sm:flex-row gap-3 pt-2 w-full max-w-sm">
                   <a
+                    href={getWhatsAppLink()}
+                    className="flex-1 flex items-center justify-center gap-2 bg-[#8CCB00] hover:bg-[#78ad00] text-white font-bold py-3 px-5 rounded-xl shadow-md transition-colors text-sm"
+                  >
+                    <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                      <path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984a9.96 9.96 0 0 0 1.333 4.982L2 22l5.202-1.362a9.92 9.92 0 0 0 4.808 1.226h.003c5.502 0 9.99-4.479 9.99-9.987A9.96 9.96 0 0 0 12.012 2zm6.09 13.98c-.25.707-1.447 1.3-1.983 1.385-.494.08-1.139.145-3.32-.74-2.793-1.13-4.6-3.965-4.737-4.153-.14-.188-1.12-1.485-1.12-2.83 0-1.348.705-2.012.955-2.28.25-.268.54-.336.722-.336.182 0 .365.002.522.01.163.008.38-.063.595.453.22.53.753 1.838.818 1.97.066.133.11.288.02.466-.09.18-.135.29-.27.447-.133.156-.28.35-.4.5-.133.167-.272.35-.117.618.155.267.69 1.13 1.48 1.834.72.64 1.326.837 1.636.966.31.13.49.108.673-.102.183-.21.785-.912.996-1.222.21-.31.42-.26.705-.152.285.11 1.808.853 2.118.998.31.144.516.216.59.34.075.127.075.734-.176 1.44z"/>
+                    </svg>
+                    Confirm Booking on WhatsApp
+                  </a>
+                  <a
                     href={`tel:${PHONE_RAW}`}
                     className="flex-1 flex items-center justify-center gap-2 bg-[#0B4DAB] hover:bg-blue-800 text-white font-bold py-3 px-5 rounded-xl shadow-md transition-colors text-sm"
                   >
@@ -164,17 +152,6 @@ export default function Booking({ selectedService, onClose }) {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
                     </svg>
                     Call Ganesh Now
-                  </a>
-                  <a
-                     href={`${WHATSAPP_URL}?text=${encodeURIComponent('Hi Ganesh! I just submitted a booking on your website. Please confirm my slot!')}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-1 flex items-center justify-center gap-2 bg-[#8CCB00] hover:bg-[#78ad00] text-white font-bold py-3 px-5 rounded-xl shadow-md transition-colors text-sm"
-                  >
-                    <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                      <path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984a9.96 9.96 0 001.333 4.982L2 22l5.202-1.362a9.92 9.92 0 004.808 1.226h.003c5.502 0 9.99-4.479 9.99-9.987A9.96 9.96 0 0012.012 2zm6.09 13.98c-.25.707-1.447 1.3-1.983 1.385-.494.08-1.139.145-3.32-.74-2.793-1.13-4.6-3.965-4.737-4.153-.14-.188-1.12-1.485-1.12-2.83 0-1.348.705-2.012.955-2.28.25-.268.54-.336.722-.336.182 0 .365.002.522.01.163.008.38-.063.595.453.22.53.753 1.838.818 1.97.066.133.11.288.02.466-.09.18-.135.29-.27.447-.133.156-.28.35-.4.5-.133.167-.272.35-.117.618.155.267.69 1.13 1.48 1.834.72.64 1.326.837 1.636.966.31.13.49.108.673-.102.183-.21.785-.912.996-1.222.21-.31.42-.26.705-.152.285.11 1.808.853 2.118.998.31.144.516.216.59.34.075.127.075.734-.176 1.44z"/>
-                    </svg>
-                    WhatsApp Ganesh
                   </a>
                 </div>
                 <button onClick={resetForm} className="text-slate-400 hover:text-slate-600 text-xs font-semibold underline mt-2">
@@ -187,11 +164,6 @@ export default function Booking({ selectedService, onClose }) {
                 {status === 'error' && (
                   <div className="p-4 rounded-xl mb-6 text-sm font-medium bg-red-50 text-red-800 border border-red-200">
                     Please fill out all required fields to register slot.
-                  </div>
-                )}
-                {status === 'api-error' && (
-                  <div className="p-4 rounded-xl mb-6 text-sm font-medium bg-red-50 text-red-800 border border-red-200">
-                    Failed to submit booking. Please try again or use WhatsApp/Call.
                   </div>
                 )}
                 <form onSubmit={handleSubmit} className="space-y-5">
@@ -246,24 +218,12 @@ export default function Booking({ selectedService, onClose }) {
                     <input type="date" id="book-date" name="date" value={formData.date} onChange={handleChange}
                       className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#0B4DAB]" required />
                   </div>
-                  <button type="submit" disabled={submitting}
-                    className="w-full bg-[#0B4DAB] hover:bg-blue-800 text-white font-bold py-3.5 px-6 rounded-xl shadow-md transition-all flex items-center justify-center gap-2 disabled:opacity-50">
-                    {submitting ? (
-                      <>
-                        <svg className="animate-spin h-5 w-5 text-white" fill="none" viewBox="0 0 24 24">
-                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
-                        </svg>
-                        Submitting Booking...
-                      </>
-                    ) : (
-                      <>
-                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-                        </svg>
-                        Submit Booking
-                      </>
-                    )}
+                  <button type="submit"
+                    className="w-full bg-[#0B4DAB] hover:bg-blue-800 text-white font-bold py-3.5 px-6 rounded-xl shadow-md transition-all flex items-center justify-center gap-2">
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                    </svg>
+                    Submit Booking
                   </button>
                   <p className="text-center text-xs text-slate-400 font-medium">
                     ✅ No advance payment • Ganesh calls back within 15 mins
