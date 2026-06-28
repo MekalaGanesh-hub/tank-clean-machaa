@@ -61,6 +61,9 @@ export default function Booking({ selectedService, onClose }) {
       return;
     }
     setStatus('success');
+    setTimeout(() => {
+      window.location.href = getWhatsAppLink();
+    }, 1000);
   };
 
   const resetForm = () => {

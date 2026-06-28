@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default function Gallery() {
-  const videoSrc = '/WhatsApp Video 2026-06-28 at 7.52.34 PM.mp4';
+  const videoSrc = '/WhatsApp%20Video%202026-06-28%20at%207.52.34%20PM.mp4';
 
   const items = [
     {
@@ -96,7 +96,6 @@ export default function Gallery() {
               preload="metadata"
               poster="/logo.png"
               style={{ maxHeight: '70vh' }}
-              src={videoSrc}
             >
               <source src={videoSrc} type="video/mp4" />
               Your browser does not support the video tag.
