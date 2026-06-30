@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { LanguageProvider } from './context/LanguageContext';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -18,9 +18,20 @@ import Booking from './components/Booking';
 import Footer from './components/Footer';
 import FloatingActions from './components/FloatingActions';
 import LivePopups from './components/LivePopups';
+import AdminDashboard from './components/AdminDashboard';
 
 export default function App() {
   const [selectedService, setSelectedService] = useState('');
+  const [route, setRoute] = useState('main');
+
+  useEffect(() => {
+    const onHashChange = () => {
+      setRoute(window.location.hash === '#admin' ? 'admin' : 'main');
+    };
+    onHashChange();
+    window.addEventListener('hashchange', onHashChange);
+    return () => window.removeEventListener('hashchange', onHashChange);
+  }, []);
 
   const handleBookClick = (serviceId = '') => {
     setSelectedService(serviceId);
@@ -29,6 +40,10 @@ export default function App() {
       bookingSection.scrollIntoView({ behavior: 'smooth' });
     }
   };
+
+  if (route === 'admin') {
+    return <AdminDashboard onBack={() => { window.location.hash = ''; }} />;
+  }
 
   return (
     <LanguageProvider>
@@ -88,6 +103,11 @@ export default function App() {
 
       {/* Social proof live booking notifications */}
       <LivePopups />
+
+      {/* Admin link (hidden in footer) */}
+      <a href="#admin" className="fixed bottom-6 left-1/2 -translate-x-1/2 text-[10px] text-slate-300 hover:text-slate-400 transition-colors z-30">
+        ⚙️ Admin
+      </a>
     </div>
     </LanguageProvider>
   );

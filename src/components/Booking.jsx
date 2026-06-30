@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { PHONE_RAW, PHONE, EMAIL, ADDRESS, OWNER, WHATSAPP_URL } from '../constants';
+import { createBooking } from '../firebase/services';
 
 const SERVICE_LABELS = {
   overhead: 'Overhead Tank Cleaning',
@@ -54,11 +55,16 @@ export default function Booking({ selectedService, onClose }) {
     return `${WHATSAPP_URL}?text=${text}`;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!formData.name || !formData.mobile || !formData.serviceType || !formData.tankSize || !formData.address || !formData.date) {
       setStatus('error');
       return;
+    }
+    try {
+      await createBooking(formData);
+    } catch (err) {
+      console.error('Firebase write failed, proceeding with WhatsApp fallback:', err);
     }
     setStatus('success');
     setTimeout(() => {
