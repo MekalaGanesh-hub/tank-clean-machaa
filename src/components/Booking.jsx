@@ -29,6 +29,7 @@ export default function Booking({ selectedService, onClose }) {
   });
   const [status, setStatus] = useState('');
   const [submitting, setSubmitting] = useState(false);
+  const [firebaseError, setFirebaseError] = useState('');
 
   useEffect(() => {
     if (selectedService) {
@@ -63,8 +64,12 @@ export default function Booking({ selectedService, onClose }) {
       return;
     }
     setSubmitting(true);
-    createBooking(formData).catch((err) => {
-      console.error('Firebase write failed, proceeding with WhatsApp fallback:', err);
+    setFirebaseError('');
+    createBooking(formData).then(() => {
+      setFirebaseError('');
+    }).catch((err) => {
+      console.error('Firebase write failed:', err);
+      setFirebaseError(`Firebase: ${err.message}`);
     });
     setTimeout(() => {
       setSubmitting(false);
@@ -79,6 +84,7 @@ export default function Booking({ selectedService, onClose }) {
     setFormData({ name: '', mobile: '', serviceType: '', tankSize: '', address: '', date: '' });
     setStatus('');
     setSubmitting(false);
+    setFirebaseError('');
     if (onClose) onClose();
   };
 
@@ -177,6 +183,11 @@ export default function Booking({ selectedService, onClose }) {
                 {status === 'error' && (
                   <div className="p-4 rounded-xl mb-6 text-sm font-medium bg-red-50 text-red-800 border border-red-200">
                     Please fill out all required fields to register slot.
+                  </div>
+                )}
+                {firebaseError && (
+                  <div className="p-4 rounded-xl mb-6 text-sm font-medium bg-yellow-50 text-yellow-800 border border-yellow-200">
+                    ⚠️ Data not saved to cloud: {firebaseError}
                   </div>
                 )}
                 <form onSubmit={handleSubmit} className="space-y-5">
