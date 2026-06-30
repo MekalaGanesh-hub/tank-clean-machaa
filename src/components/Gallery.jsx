@@ -23,8 +23,8 @@ export default function Gallery() {
   ];
 
   return (
-    <section id="gallery" className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="gallery" className="py-16 sm:py-20 bg-white">
+      <div className="w-full px-4 sm:px-6 lg:px-8 xl:px-12">
         
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">

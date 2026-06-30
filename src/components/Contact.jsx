@@ -51,11 +51,11 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="contact" className="py-16 sm:py-20 bg-white">
+      <div className="w-full px-4 sm:px-6 lg:px-8 xl:px-12">
         
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
           <h2 className="text-base font-semibold text-[#0B4DAB] uppercase tracking-wider">Contact Us</h2>
           <p className="mt-2 text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
             Connect With Our Cleaning Experts
@@ -66,7 +66,7 @@ export default function Contact() {
         </div>
 
         {/* Split Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12">
           
           {/* Left Column: Contact details (5 cols) */}
           <div className="lg:col-span-5 space-y-6">

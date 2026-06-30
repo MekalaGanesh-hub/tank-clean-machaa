@@ -14,21 +14,21 @@ export default function ServiceAreas() {
   const [hoveredArea, setHoveredArea] = useState(null);
 
   return (
-    <section id="areas" className="py-20 bg-gradient-to-br from-slate-50 to-blue-50/30 relative overflow-hidden">
+    <section id="areas" className="py-16 sm:py-20 bg-gradient-to-br from-slate-50 to-blue-50/30 relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-blue-100 rounded-full opacity-20 filter blur-3xl -mr-40 -mt-40 pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-80 h-80 bg-green-50 rounded-full opacity-30 filter blur-2xl -ml-20 -mb-20 pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="w-full px-4 sm:px-6 lg:px-8 xl:px-12 relative z-10">
 
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
           <h2 className="text-base font-semibold text-[#0B4DAB] uppercase tracking-wider">Service Coverage</h2>
           <p className="mt-2 text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
             Serving All of Bangalore
           </p>
           <p className="mt-4 text-lg text-slate-600">
-            We cover 30+ localities across Bengaluru. Call us to check real-time availability for your exact location.
+            We cover all major localities across Bangalore. If your area is not listed, call us to confirm availability.
           </p>
         </div>
 

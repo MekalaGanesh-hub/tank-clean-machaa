@@ -38,11 +38,11 @@ const articles = [
 
 export default function Blog() {
   return (
-    <section className="py-24 bg-slate-50 border-t border-slate-100" id="blog">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-16 sm:py-20 bg-slate-50" id="blog">
+      <div className="w-full px-4 sm:px-6 lg:px-8 xl:px-12">
         
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
           <span className="text-xs font-bold text-[#8CCB00] uppercase tracking-widest bg-green-50 px-4 py-1.5 rounded-full border border-green-100">
             Knowledge Base
           </span>
@@ -55,7 +55,7 @@ export default function Blog() {
         </div>
 
         {/* Blog Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
           {articles.map((article) => (
             <article 
               key={article.id} 

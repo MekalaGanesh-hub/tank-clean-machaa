@@ -80,11 +80,11 @@ export default function Planner({ onBook }) {
   };
 
   return (
-    <section id="planner" className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="planner" className="py-16 sm:py-20 bg-white">
+      <div className="w-full px-4 sm:px-6 lg:px-8 xl:px-12">
         
         {/* Section Title */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
           <h2 className="text-base font-semibold text-[#0B4DAB] uppercase tracking-wider">Free Safety Tools</h2>
           <p className="mt-2 text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
             TDS Safety Widget & Maintenance Planner

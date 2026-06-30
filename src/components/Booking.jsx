@@ -73,8 +73,8 @@ export default function Booking({ selectedService, onClose }) {
   };
 
   return (
-    <section id="booking" className="py-20 bg-gradient-to-br from-blue-50 to-white relative">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="booking" className="py-16 sm:py-20 bg-gradient-to-br from-blue-50 to-white relative">
+      <div className="w-full px-4 sm:px-6 lg:px-8 xl:px-12">
         <div className="bg-white rounded-3xl shadow-xl overflow-hidden border border-slate-100 grid grid-cols-1 lg:grid-cols-12">
 
           {/* Left panel */}

@@ -83,8 +83,8 @@ export default function Pricing({ onBookClick }) {
   ];
 
   return (
-    <section id="pricing" className="py-20 bg-slate-50 relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="pricing" className="py-16 sm:py-20 bg-slate-50 relative">
+      <div className="w-full px-4 sm:px-6 lg:px-8 xl:px-12">
         
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">

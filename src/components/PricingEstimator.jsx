@@ -16,11 +16,12 @@ export default function PricingEstimator({ onBookClick }) {
   const currentPrice = calculatePrice();
 
   return (
-    <section className="py-20 bg-white relative overflow-hidden" id="estimator">
+    <section className="py-16 sm:py-20 bg-white relative overflow-hidden" id="estimator">
       <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[#8CCB00]/5 rounded-full filter blur-3xl -mr-20 -mt-20 z-0 pointer-events-none"></div>
       
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center mb-12">
+      <div className="w-full px-4 sm:px-6 lg:px-8 xl:px-12 relative z-10">
+        <div className="max-w-5xl mx-auto">
+        <div className="text-center mb-10 sm:mb-12">
            <span className="text-xs font-bold text-[#0B4DAB] uppercase tracking-widest bg-blue-50 px-4 py-1.5 rounded-full border border-blue-100">
             Instant Quote
           </span>
@@ -99,6 +100,7 @@ export default function PricingEstimator({ onBookClick }) {
           </div>
         </div>
       </div>
+    </div>
     </section>
   );
 }

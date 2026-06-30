@@ -63,15 +63,15 @@ export default function Testimonials() {
   const displayedReviews = showAll ? reviews : reviews.slice(0, 3);
 
   return (
-    <section className="py-20 bg-slate-50 relative overflow-hidden">
+    <section className="py-16 sm:py-20 bg-slate-50 relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute top-1/2 left-0 w-72 h-72 bg-green-50 rounded-full opacity-35 filter blur-3xl"></div>
       <div className="absolute top-10 right-0 w-48 h-48 bg-blue-50 rounded-full opacity-30 filter blur-2xl"></div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="w-full px-4 sm:px-6 lg:px-8 xl:px-12 relative z-10">
         
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
           <h2 className="text-base font-semibold text-[#0B4DAB] uppercase tracking-wider">Testimonials</h2>
           <p className="mt-2 text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
             Loved By Bengaluru Families
@@ -95,7 +95,7 @@ export default function Testimonials() {
         </div>
 
         {/* Reviews Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8">
           {displayedReviews.map((rev, index) => (
             <div
               key={index}

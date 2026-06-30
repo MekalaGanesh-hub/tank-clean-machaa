@@ -10,7 +10,7 @@ export default function Hero({ onBookClick }) {
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-100 rounded-full filter blur-3xl opacity-40 -mr-40 -mt-40 z-0"></div>
       <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-green-50 rounded-full filter blur-2xl opacity-50 -ml-20 -mb-20 z-0"></div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="w-full px-4 sm:px-6 lg:px-8 xl:px-12 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           
           {/* Left Column: Heading and CTAs */}

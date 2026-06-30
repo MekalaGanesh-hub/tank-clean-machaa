@@ -44,19 +44,19 @@ export default function Faq() {
   };
 
   return (
-    <section id="faq" className="py-20 bg-white">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-base font-semibold text-[#0B4DAB] uppercase tracking-wider">Frequently Asked Questions</h2>
-          <p className="mt-2 text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-            Got Questions? We Clean Doubts!
-          </p>
-          <p className="mt-4 text-lg text-slate-600">
-            Everything you need to know about our process, pricing, and service coverage.
-          </p>
-        </div>
+    <section id="faq" className="py-16 sm:py-20 bg-white">
+      <div className="w-full px-4 sm:px-6 lg:px-8 xl:px-12">
+        <div className="max-w-4xl mx-auto">
+          {/* Section Header */}
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className="text-base font-semibold text-[#0B4DAB] uppercase tracking-wider">Frequently Asked Questions</h2>
+            <p className="mt-2 text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+              Got Questions? We Clean Doubts!
+            </p>
+            <p className="mt-4 text-lg text-slate-600">
+              Everything you need to know about our process, pricing, and service coverage.
+            </p>
+          </div>
 
         {/* FAQ Accordion List */}
         <div className="space-y-4">
@@ -121,6 +121,7 @@ export default function Faq() {
           </div>
         </div>
 
+      </div>
       </div>
     </section>
   );

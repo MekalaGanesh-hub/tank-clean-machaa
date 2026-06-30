@@ -72,6 +72,7 @@ export default function Services({ onBookClick }) {
       title: 'Overhead Tank Cleaning',
       description: 'Thorough high-pressure washing, sludge removal, and scrubbing of PVC, plastic, and concrete overhead tanks, followed by UV disinfection.',
       price: '₹499 onwards',
+      image: '/gallery/dirty_tank_1.png',
       icon: (
         <svg className="w-10 h-10 text-[#0B4DAB]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
@@ -83,6 +84,7 @@ export default function Services({ onBookClick }) {
       title: 'Underground Tank Cleaning',
       description: 'Complete dewatering, sludge extraction, and anti-bacterial scrub for concrete sumps. Essential for maintaining clean household water.',
       price: '₹1200 onwards',
+      image: '/gallery/dirty_tank_2.png',
       icon: (
         <svg className="w-10 h-10 text-[#0B4DAB]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
@@ -94,6 +96,7 @@ export default function Services({ onBookClick }) {
       title: 'Drum Tank Cleaning',
       description: 'Quick and efficient sanitization of domestic water drums, small storage units, and blue utility drums. Removes sticky layers and mold.',
       price: '₹150 onwards',
+      image: '/gallery/clean_tank_1.png',
       icon: (
         <svg className="w-10 h-10 text-[#0B4DAB]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
@@ -105,6 +108,7 @@ export default function Services({ onBookClick }) {
       title: 'Disinfection & Sanitization',
       description: 'Advanced 6-stage sanitization process using eco-friendly chlorine compounds, anti-bacterial sprays, and ultraviolet disinfection.',
       price: 'Contact for Quote',
+      image: '/gallery/clean_tank_2.png',
       icon: (
         <svg className="w-10 h-10 text-[#0B4DAB]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
@@ -116,6 +120,7 @@ export default function Services({ onBookClick }) {
       title: 'Apartment Packages',
       description: 'Bulk packages customized for apartment complexes and societies. Features comprehensive schedules for all sumps and overhead tanks.',
       price: '₹5000 onwards',
+      image: '/gallery/dirty_tank_1.png',
       icon: (
         <svg className="w-10 h-10 text-[#0B4DAB]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
@@ -125,8 +130,8 @@ export default function Services({ onBookClick }) {
   ];
 
   return (
-    <section id="services" className="py-20 bg-slate-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="services" className="py-16 sm:py-20 bg-slate-50">
+      <div className="w-full px-4 sm:px-6 lg:px-8 xl:px-12">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
@@ -140,20 +145,30 @@ export default function Services({ onBookClick }) {
         </div>
 
         {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8 mb-16 sm:mb-20">
           {services.map((service) => (
             <div
               key={service.id}
-              className="bg-white rounded-3xl p-8 shadow-md border border-slate-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex flex-col justify-between"
+              className="bg-white rounded-3xl overflow-hidden shadow-md border border-slate-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex flex-col justify-between"
             >
-              <div>
-                <div className="p-4 bg-blue-50 rounded-2xl w-fit mb-6">
-                  {service.icon}
+              <div className="relative h-48 bg-slate-100 overflow-hidden">
+                <img
+                  src={service.image}
+                  alt={service.title}
+                  className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
+                <div className="absolute bottom-4 left-4">
+                  <div className="p-2.5 bg-white/95 backdrop-blur-sm rounded-xl shadow-sm">
+                    {service.icon}
+                  </div>
                 </div>
+              </div>
+              <div className="p-8">
                 <h3 className="text-xl font-bold text-slate-900 mb-3">{service.title}</h3>
                 <p className="text-slate-600 text-sm leading-relaxed mb-6">{service.description}</p>
               </div>
-              <div className="pt-6 border-t border-slate-100 flex items-center justify-between">
+              <div className="px-8 pb-8 pt-0 flex items-center justify-between">
                 <div>
                   <span className="text-xs text-slate-400 block font-medium">Starting from</span>
                   <span className="text-[#0B4DAB] font-extrabold text-lg">{service.price}</span>
