@@ -55,18 +55,16 @@ export default function Booking({ selectedService, onClose }) {
     return `${WHATSAPP_URL}?text=${text}`;
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     if (!formData.name || !formData.mobile || !formData.serviceType || !formData.tankSize || !formData.address || !formData.date) {
       setStatus('error');
       return;
     }
-    try {
-      await createBooking(formData);
-    } catch (err) {
-      console.error('Firebase write failed, proceeding with WhatsApp fallback:', err);
-    }
     setStatus('success');
+    createBooking(formData).catch((err) => {
+      console.error('Firebase write failed, proceeding with WhatsApp fallback:', err);
+    });
     setTimeout(() => {
       window.location.href = getWhatsAppLink();
     }, 1000);
